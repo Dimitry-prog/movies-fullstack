@@ -6,10 +6,13 @@ import helmet from 'helmet';
 import appRouter from './routes/index.js';
 import handleErrors from './middlewares/handleErrors.js';
 import { RATE_LIMIT } from './utils/constants.js';
+import { errorLogger, requestLogger } from './middlewares/logger.js';
 
 const PORT = 3000;
 const DB_URL = 'mongodb://localhost:27017/bitfilmsdb';
 const app = express();
+
+app.use(requestLogger);
 
 app.use(helmet());
 app.use(RATE_LIMIT);
@@ -18,6 +21,7 @@ app.use(express.json());
 
 app.use(appRouter);
 
+app.use(errorLogger);
 app.use(errors());
 app.use(handleErrors);
 
