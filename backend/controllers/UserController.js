@@ -1,17 +1,19 @@
 import UserModel from '../models/UserModel.js';
+import NotFoundError from '../errors/NotFoundError .js';
+import BadRequestError from '../errors/BadRequestError.js';
 
 export const getUser = async (req, res, next) => {
   try {
     const user = await UserModel.findById(req.user._id);
 
     if (!user) {
-      return res.json({ message: 'Noy user' });
+      return next(new NotFoundError('User not found'));
     }
 
     return res.json(user);
   } catch (e) {
     if (e.name === 'CastError') {
-      return res.json({ message: 'Baq request' });
+      return next(new BadRequestError());
     }
     return next(e);
   }
@@ -30,26 +32,14 @@ export const updateUserInfo = async (req, res, next) => {
     });
 
     if (!user) {
-      return res.json({ message: 'Noy user' });
+      return next(new NotFoundError('User not found'));
     }
 
     return res.json(user);
   } catch (e) {
     if (e.name === 'ValidationError') {
-      return res.json({ message: 'Baq request' });
+      return next(new BadRequestError());
     }
     return next(e);
-  }
-};
-
-export const createUser = async (req, res, next) => {
-  try {
-    const user = await UserModel.create(req.body);
-    return res.json(user);
-  } catch (e) {
-    if (e.name === 'ValidationError' || e.name === 'CastError') {
-      return res.status(400).json({ message: 'Incorrect data' });
-    }
-    return res.status(500).json({ message: 'Server not work' });
   }
 };

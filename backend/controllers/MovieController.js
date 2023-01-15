@@ -1,4 +1,6 @@
 import MovieModel from '../models/MovieModel.js';
+import BadRequestError from '../errors/BadRequestError.js';
+import NotFoundError from '../errors/NotFoundError .js';
 
 export const getMovies = async (req, res, next) => {
   try {
@@ -19,9 +21,9 @@ export const createMovie = async (req, res, next) => {
     return res.json(movie);
   } catch (e) {
     if (e.name === 'ValidationError') {
-      return res.status(400).json({ message: 'Baq request' });
+      return next(new BadRequestError());
     }
-    return res.status(500).json({ message: 'Server not work' });
+    return next(e);
   }
 };
 
@@ -30,13 +32,13 @@ export const removeMovie = async (req, res, next) => {
     const movie = await MovieModel.findByIdAndDelete(req.params.movieId);
 
     if (!movie) {
-      return res.status(404).json({ message: 'Card not found' });
+      return next(new NotFoundError('Movie not found'));
     }
     return res.json(movie);
   } catch (e) {
-    if (e.name === 'ValidationError' || e.name === 'CastError') {
-      return res.status(400).json({ message: 'Incorrect data' });
+    if (e.name === 'CastError') {
+      return next(new BadRequestError());
     }
-    return res.status(500).json({ message: 'Server not work' });
+    return next(e);
   }
 };

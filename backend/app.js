@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import appRouter from './routes/index.js';
+import handleErrors from './middlewares/handleErrors.js';
 
 const PORT = 3000;
 const DB_URL = 'mongodb://localhost:27017/bitfilmsdb';
@@ -17,6 +18,8 @@ app.use((req, res, next) => {
 });
 
 app.use(appRouter);
+
+app.use(handleErrors);
 
 const startApp = async () => {
   try {
