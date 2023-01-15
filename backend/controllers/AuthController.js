@@ -37,6 +37,7 @@ export const registerUser = async (req, res, next) => {
       password: hash,
     });
     delete user.password;
+
     return res.status(HTTP_STATUS_CODE.created).json({
       user,
       _id: user._id,
