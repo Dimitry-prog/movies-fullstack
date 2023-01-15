@@ -4,11 +4,12 @@ import movieRouter from './MovieRouter.js';
 import handleAuthUser from '../middlewares/handleAuthUser.js';
 import { loginUser, logoutUser, registerUser } from '../controllers/AuthController.js';
 import NotFoundError from '../errors/NotFoundError .js';
+import { validationSignin, validationSignup } from '../helpers/validationCelebrate.js';
 
 const router = new Router();
 
-router.post('/signup', registerUser);
-router.post('/signin', loginUser);
+router.post('/signup', validationSignup, registerUser);
+router.post('/signin', validationSignin, loginUser);
 router.get('/signout', logoutUser);
 
 router.use(handleAuthUser);

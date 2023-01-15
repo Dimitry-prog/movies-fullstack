@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import validator from 'validator';
 import RequiredAuthError from '../errors/RequiredAuthError.js';
 
 const userModel = new mongoose.Schema({
@@ -13,6 +14,12 @@ const userModel = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
+    validate: {
+      validator(v) {
+        return validator.isEmail(v);
+      },
+      message: (props) => `${props.value} is not valid email address!`,
+    },
   },
   password: {
     type: String,

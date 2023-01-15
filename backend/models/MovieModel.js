@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import validator from 'validator';
 
 const movieModel = new mongoose.Schema({
   country: {
@@ -24,14 +25,32 @@ const movieModel = new mongoose.Schema({
   image: {
     type: String,
     required: true,
+    validate: {
+      validator(v) {
+        return validator.isURL(v);
+      },
+      message: (props) => `${props.value} is not valid link!`,
+    },
   },
   trailerLink: {
     type: String,
     required: true,
+    validate: {
+      validator(v) {
+        return validator.isURL(v);
+      },
+      message: (props) => `${props.value} is not valid link!`,
+    },
   },
   thumbnail: {
     type: String,
     required: true,
+    validate: {
+      validator(v) {
+        return validator.isURL(v);
+      },
+      message: (props) => `${props.value} is not valid link!`,
+    },
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
