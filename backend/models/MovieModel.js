@@ -36,7 +36,6 @@ const movieModel = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'userModel',
-    required: true,
   },
   movieId: {
     type: String,
