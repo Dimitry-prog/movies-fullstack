@@ -36,10 +36,10 @@ export const registerUser = async (req, res, next) => {
       ...req.body,
       password: hash,
     });
-    delete user.password;
 
     return res.status(HTTP_STATUS_CODE.created).json({
-      user,
+      name: user.name,
+      email: user.email,
       _id: user._id,
     });
   } catch (e) {
