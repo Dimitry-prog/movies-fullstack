@@ -1,12 +1,16 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { errors } from 'celebrate';
+import * as dotenv from 'dotenv';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import appRouter from './routes/index.js';
 import handleErrors from './middlewares/handleErrors.js';
-import { RATE_LIMIT } from './utils/constants.js';
+import { CORS_OPTIONS, RATE_LIMIT } from './utils/constants.js';
 import { errorLogger, requestLogger } from './middlewares/logger.js';
+
+dotenv.config();
 
 const PORT = 3000;
 const DB_URL = 'mongodb://localhost:27017/bitfilmsdb';
@@ -18,6 +22,8 @@ app.use(helmet());
 app.use(RATE_LIMIT);
 app.use(cookieParser());
 app.use(express.json());
+
+app.use(cors(CORS_OPTIONS));
 
 app.use(appRouter);
 
