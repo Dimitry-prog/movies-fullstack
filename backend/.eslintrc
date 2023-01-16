@@ -23,6 +23,7 @@
       {
         "js": "always"
       }
-    ]
+    ],
+    "linebreak-style": ["error", "windows"]
   }
 }
