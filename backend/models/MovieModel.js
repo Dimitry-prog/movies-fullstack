@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
+import { ERRORS_MESSAGE } from '../utils/constants.js';
 
 const movieModel = new mongoose.Schema({
   country: {
@@ -29,7 +30,7 @@ const movieModel = new mongoose.Schema({
       validator(v) {
         return validator.isURL(v);
       },
-      message: (props) => `${props.value} is not valid link!`,
+      message: (props) => `${props.value} ${ERRORS_MESSAGE.notValidLink}`,
     },
   },
   trailerLink: {
@@ -39,7 +40,7 @@ const movieModel = new mongoose.Schema({
       validator(v) {
         return validator.isURL(v);
       },
-      message: (props) => `${props.value} is not valid link!`,
+      message: (props) => `${props.value} ${ERRORS_MESSAGE.notValidLink}`,
     },
   },
   thumbnail: {
@@ -49,7 +50,7 @@ const movieModel = new mongoose.Schema({
       validator(v) {
         return validator.isURL(v);
       },
-      message: (props) => `${props.value} is not valid link!`,
+      message: (props) => `${props.value} ${ERRORS_MESSAGE.notValidLink}`,
     },
   },
   owner: {

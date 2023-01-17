@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken';
 import UserModel from '../models/UserModel.js';
 import hashData from '../utils/hashData.js';
-import { HTTP_STATUS_CODE } from '../utils/constants.js';
+import {
+  ERRORS_MESSAGE, ERRORS_NAME, HTTP_STATUS_CODE, JWT_SECRET_DEV, RESPONSE_MESSAGE,
+} from '../utils/constants.js';
 import BadRequestError from '../errors/BadRequestError.js';
 import ExistUserError from '../errors/ExistUserError.js';
 
@@ -14,20 +16,20 @@ export const loginUser = async (req, res, next) => {
 
     const token = jwt.sign(
       { _id: authUser._id },
-      NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+      NODE_ENV === 'production' ? JWT_SECRET : JWT_SECRET_DEV,
       { expiresIn: '7d' },
     );
 
     return res.cookie('jwt', token, {
       maxAge: 3600000,
       httpOnly: true,
-    }).send({ message: 'Authentication successful' });
+    }).send({ message: RESPONSE_MESSAGE.userLoginSuccess });
   } catch (e) {
     return next(e);
   }
 };
 
-export const logoutUser = async (req, res) => res.clearCookie('jwt').send({ message: 'Bye, see you later' });
+export const logoutUser = async (req, res) => res.clearCookie('jwt').send({ message: RESPONSE_MESSAGE.userLogout });
 
 export const registerUser = async (req, res, next) => {
   try {
@@ -43,11 +45,11 @@ export const registerUser = async (req, res, next) => {
       _id: user._id,
     });
   } catch (e) {
-    if (e.name === 'ValidationError') {
+    if (e.name === ERRORS_NAME.validationError) {
       return next(new BadRequestError());
     }
     if (e.code === 11000) {
-      return next(new ExistUserError('You already registered, please login instead'));
+      return next(new ExistUserError(ERRORS_MESSAGE.userExist));
     }
     return next(e);
   }

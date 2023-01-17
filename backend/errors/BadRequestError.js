@@ -1,7 +1,9 @@
+import { ERRORS_MESSAGE, HTTP_STATUS_CODE } from '../utils/constants.js';
+
 class BadRequestError extends Error {
-  constructor(message = 'Incorrect data') {
+  constructor(message = ERRORS_MESSAGE.incorrectData) {
     super(message);
-    this.statusCode = 400;
+    this.statusCode = HTTP_STATUS_CODE.badRequest;
   }
 }
 
