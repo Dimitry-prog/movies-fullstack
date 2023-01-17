@@ -2,27 +2,55 @@
 @import "src/styles/variables.scss";
 
 .header {
+  padding: 20px 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &_hero {
+    background-color: $accent-color-blue-light;
+  }
 
   &__logo {
     width: 38px;
     height: 38px;
   }
 
-  nav {
+  &__nav {
     display: flex;
     align-items: center;
     gap: 50px;
+
+    &_hero {
+
+    }
   }
 
-  ul {
+  &__list {
     display: flex;
+    align-items: center;
     gap: 20px;
 
-    li {
-      @include custom-font-size(14px, 18px);
+    &_hero {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+  }
+
+  &__item {
+    @include custom-font-size(14px, 18px);
+
+    &_hero {
+      @include custom-font-size(12px, 16px);
+      font-weight: $font-weight-500;
+
+      &_signin {
+        padding: 8px 20px;
+        border-radius: $border-radius-s;
+        color: $black-color;
+        background-color: $accent-color-green;
+      }
     }
   }
 
