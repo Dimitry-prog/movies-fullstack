@@ -1,6 +1,7 @@
 import MovieModel from '../models/MovieModel.js';
 import BadRequestError from '../errors/BadRequestError.js';
 import NotFoundError from '../errors/NotFoundError .js';
+import ForbiddenError from '../errors/ForbiddenError.js';
 
 export const getMovies = async (req, res, next) => {
   try {
@@ -34,6 +35,12 @@ export const removeMovie = async (req, res, next) => {
     if (!movie) {
       return next(new NotFoundError('Movie not found'));
     }
+    if (String(movie.owner._id) !== req.user._id) {
+      return next(new ForbiddenError('You don\'t have permission for delete this card'));
+    }
+
+    await movie.remove();
+
     return res.json(movie);
   } catch (e) {
     if (e.name === 'CastError') {
