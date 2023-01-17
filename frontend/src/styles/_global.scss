@@ -1,0 +1,12 @@
+@import "variables";
+
+#root {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  color: $white-color;
+  background-color: $primary-color;
+}
+
+a.active {
+  font-weight: $font-weight-500;
+}
