@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9053b70-0ced-45b0-980a-f86f65fce9e2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/AuthController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/AuthController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/MovieController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/MovieController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/errors/BadRequestError.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/errors/BadRequestError.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/errors/ExistUserError.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/errors/ExistUserError.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/errors/ForbiddenError.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/errors/ForbiddenError.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/errors/NotFoundError .js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/errors/NotFoundError .js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/errors/RequiredAuthError.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/errors/RequiredAuthError.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/handleAuthUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/handleAuthUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/handleErrors.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/handleErrors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/MovieModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/MovieModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/UserModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/UserModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/utils/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.eslintrc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673900743937</updated>
       <workItem from="1673900750088" duration="743000" />
-      <workItem from="1673964105951" duration="5273000" />
+      <workItem from="1673964105951" duration="5601000" />
     </task>
     <servers />
   </component>
