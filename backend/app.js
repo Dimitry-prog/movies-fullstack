@@ -7,14 +7,12 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import appRouter from './routes/index.js';
 import handleErrors from './middlewares/handleErrors.js';
-import { CORS_OPTIONS, RATE_LIMIT } from './utils/constants.js';
+import { CORS_OPTIONS, DB_URL_DEV, RATE_LIMIT } from './utils/constants.js';
 import { errorLogger, requestLogger } from './middlewares/logger.js';
 
 dotenv.config();
 
-const PORT = 3000;
-// const DB_URL = 'mongodb://localhost:27017/bitfilmsdb';
-const DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb';
+const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(requestLogger);
@@ -34,7 +32,7 @@ app.use(handleErrors);
 
 const startApp = async () => {
   try {
-    await mongoose.connect(DB_URL, {
+    await mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.DB_URL : DB_URL_DEV, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
