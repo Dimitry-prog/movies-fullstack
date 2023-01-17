@@ -27,7 +27,7 @@ export const loginUser = async (req, res, next) => {
   }
 };
 
-export const logoutUser = async (req, res, next) => res.clearCookie('jwt').send({ message: 'Bye, see you later' });
+export const logoutUser = async (req, res) => res.clearCookie('jwt').send({ message: 'Bye, see you later' });
 
 export const registerUser = async (req, res, next) => {
   try {
