@@ -3,6 +3,7 @@ import styles from './Home.module.scss';
 import Hero from '../Hero/Hero';
 import About from '../About/About';
 import Techs from '../Techs/Techs';
+import AboutMe from '../AboutMe/AboutMe';
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Hero/>
             <About/>
             <Techs/>
+            <AboutMe/>
         </main>
     );
 };
