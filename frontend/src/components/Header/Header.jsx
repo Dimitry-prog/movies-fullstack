@@ -5,8 +5,8 @@ import profileIcon from '../../images/profile_icon.svg';
 import {Link, NavLink} from 'react-router-dom';
 
 const Header = () => {
-    const isAuth = false;
-    // const isAuth = true;
+    // const isAuth = false;
+    const isAuth = true;
 
     return (
         <header className={`${styles.header} ${!isAuth ? `${styles.header_hero}` : ''}`}>
