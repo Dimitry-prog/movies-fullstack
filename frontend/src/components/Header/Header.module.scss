@@ -2,11 +2,14 @@
 @import "src/styles/variables.scss";
 
 .header {
-  @include max-width-center;
-  padding: 20px 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+  &__container {
+    @include max-width-center;
+    padding: 20px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &_hero {
     background-color: $accent-color-blue-light;

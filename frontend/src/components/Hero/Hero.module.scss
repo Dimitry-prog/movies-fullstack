@@ -1,5 +1,21 @@
+@import "src/styles/mixins.scss";
 @import "src/styles/variables.scss";
 
 .hero {
+  background-color: $accent-color-blue-light;
 
+  &__container {
+    @include max-width-center;
+    min-height: 560px;
+    padding: 50px 70px 60px;
+    background-image: url(../../images/hero_icon.svg);
+    background-repeat: no-repeat;
+    background-position: bottom 60px right 70px;
+
+    h1 {
+      @include custom-font-size(40px, 52px);
+      letter-spacing: $letter-spacing-s;
+      max-width: 626px;
+    }
+  }
 }
