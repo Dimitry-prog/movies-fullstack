@@ -1,0 +1,39 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.footer {
+  &__container {
+    @include max-width-center;
+    padding: 0 70px 20px;
+  }
+
+  h5 {
+    @include custom-font-size(13px, 16px);
+    margin-top: 80px;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid $gray-color-light;
+    color: $gray-color;
+  }
+
+  nav {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      @include custom-font-size(13px, 16px);
+    }
+
+    ul {
+      display: flex;
+      gap: 20px;
+    }
+
+    a {
+      @include custom-font-size(13px, 16px);
+    }
+  }
+
+}
