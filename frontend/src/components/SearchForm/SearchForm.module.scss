@@ -3,13 +3,19 @@
 
 .form {
   @include max-width-center;
-  padding: 70px 70px 20px;
-  margin: 0 auto 30px;
+  margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border-bottom: 1px solid $gray-color-light;
+  flex-direction: column;
+  justify-content: center;
+
+  &__container {
+    padding: 70px 70px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid $gray-color-light;
+  }
 
   img {
     padding: 12px;
@@ -37,5 +43,16 @@
     color: $white-color;
     background-color: $accent-color-blue;
     border-radius: $border-radius-xxl;
+  }
+
+  &__checkbox {
+    margin: 30px auto 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  p {
+    @include custom-font-size(14px, 18px);
   }
 }

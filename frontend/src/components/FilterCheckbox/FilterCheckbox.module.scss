@@ -1,0 +1,45 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.filterCheckbox {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+
+  &__checkbox {
+    display: none;
+
+    &:checked {
+      & + .filterCheckbox__switch {
+        background-color: $accent-color-green;
+
+        &::after {
+          background-color: $white-color;
+          transform: translateX(18px);
+        }
+      }
+    }
+  }
+
+  &__switch {
+    position: relative;
+    width: 34px;
+    height: 14px;
+    border-radius: $border-radius-xl;
+    background-color: $gray-color-light;
+    transition: $transition-m;
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 10px;
+      height: 10px;
+      left: 3px;
+      bottom: 2px;
+      border-radius: 50%;
+      background-color: $white-color-darker;
+      transition: $transition-m;
+    }
+  }
+
+}
