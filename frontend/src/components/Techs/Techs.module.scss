@@ -1,0 +1,56 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.techs {
+  background-color: $secondary-color;
+
+  &__container {
+    @include max-width-center;
+    padding: 100px 70px;
+
+    h3 {
+      @include custom-font-size(22px, 27px);
+      letter-spacing: $letter-spacing-s;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        margin-top: 46px;
+        border-bottom: 1px solid $gary-color-light-ultra;
+      }
+    }
+
+    h2 {
+      @include custom-font-size(50px, 58px);
+      max-width: 400px;
+      margin: 116px auto 26px;
+      letter-spacing: $letter-spacing-s;
+      text-align: center;
+    }
+
+    p {
+      @include custom-font-size(14px, 20px);
+      max-width: 400px;
+      margin: 0 auto;
+      letter-spacing: $letter-spacing-s;
+      text-align: center;
+    }
+
+    ul {
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+      li {
+        @include custom-font-size(14px, 17px);
+        padding: 21px 26px;
+        letter-spacing: $letter-spacing-s;
+        border-radius: $border-radius-m;
+        background-color: $primary-color-light;
+      }
+    }
+  }
+}
