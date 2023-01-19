@@ -7,18 +7,20 @@ import Techs from '../Techs/Techs';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
 
 
 function App() {
     return (
         <div className={styles.app}>
-            <Header/>
+            {/*<Header/>*/}
             {/*<Home/>*/}
             {/*<SearchForm/>*/}
             {/*<MoviesCardList/>*/}
             {/*<SavedMovies/>*/}
             {/*<Footer/>*/}
-            <Profile/>
+            {/*<Profile/>*/}
+            <Register/>
         </div>
     );
 }
