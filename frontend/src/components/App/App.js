@@ -4,6 +4,7 @@ import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import Techs from '../Techs/Techs';
+import MoviesCard from '../MoviesCard/MoviesCard';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
             {/*<Home/>*/}
             {/*<Footer/>*/}
             <SearchForm/>
-            <Techs/>
+            <MoviesCard/>
         </div>
     );
 }

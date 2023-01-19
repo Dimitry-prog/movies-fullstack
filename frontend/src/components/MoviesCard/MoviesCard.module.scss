@@ -1,0 +1,46 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.card {
+  @include max-width-center;
+  padding: 20px 70px;
+  display: flex;
+  justify-content: space-between;
+  background-color: $secondary-color-light;
+
+  &__left {
+    padding: 22px;
+  }
+
+  h3 {
+    @include custom-font-size(18px, 22px);
+    margin-bottom: 13px;
+    font-weight: $font-weight-500;
+  }
+
+  p {
+    @include custom-font-size(11px, 13px);
+    margin-bottom: 30px;
+    color: $gray-color;
+  }
+
+  button {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../../images/like.svg);
+    background-repeat: no-repeat;
+
+    &.active {
+      background-image: url(../../images/like_active.svg);
+    }
+  }
+
+  img {
+    max-width: 220px;
+    padding: 6px;
+    object-fit: cover;
+  }
+}
