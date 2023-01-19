@@ -6,6 +6,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import Techs from '../Techs/Techs';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
 
 
 function App() {
@@ -13,10 +14,11 @@ function App() {
         <div className={styles.app}>
             <Header/>
             {/*<Home/>*/}
-            <SearchForm/>
+            {/*<SearchForm/>*/}
             {/*<MoviesCardList/>*/}
-            <SavedMovies/>
-            <Footer/>
+            {/*<SavedMovies/>*/}
+            {/*<Footer/>*/}
+            <Profile/>
         </div>
     );
 }
