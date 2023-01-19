@@ -8,6 +8,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import AuthTemplate from '../AuthTemplate/AuthTemplate';
+import NotFound from '../NotFound/NotFound';
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
             {/*<SavedMovies/>*/}
             {/*<Footer/>*/}
             {/*<Profile/>*/}
-            <AuthTemplate/>
+            {/*<AuthTemplate/>*/}
+            <NotFound/>
         </div>
     );
 }
