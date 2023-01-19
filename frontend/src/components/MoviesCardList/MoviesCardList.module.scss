@@ -3,15 +3,12 @@
 
 .cardList {
   @include max-width-center;
-  padding: 70px 70px 80px;
 
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 
-  button {
+  &__load {
     @include custom-font-size(12px, 15px);
     width: 100%;
     padding: 10px;

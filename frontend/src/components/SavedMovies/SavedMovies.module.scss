@@ -1,0 +1,7 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.savedMovies {
+  @include max-width-center;
+  padding: 70px 70px 150px;
+}

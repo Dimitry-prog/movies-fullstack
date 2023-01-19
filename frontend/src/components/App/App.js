@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer';
 import SearchForm from '../SearchForm/SearchForm';
 import Techs from '../Techs/Techs';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import SavedMovies from '../SavedMovies/SavedMovies';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
             <Header/>
             {/*<Home/>*/}
             <SearchForm/>
-            <MoviesCardList/>
+            {/*<MoviesCardList/>*/}
+            <SavedMovies/>
             <Footer/>
         </div>
     );

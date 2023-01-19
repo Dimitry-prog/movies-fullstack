@@ -1,20 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './MoviesCardList.module.scss';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 const MoviesCardList = () => {
+    const [pageFilms, setPageFilms] = useState(false);
+
     return (
-        <section className={styles.cardList}>
-            <ul>
+        <>
+            <ul className={styles.cardList}>
                 <li><MoviesCard/></li>
                 <li><MoviesCard/></li>
                 <li><MoviesCard/></li>
                 <li><MoviesCard/></li>
             </ul>
-            <button type='button' aria-label='load more films'>
-                Ещё
-            </button>
-        </section>
+            {pageFilms && (
+                <button
+                    type='button'
+                    aria-label='load more films'
+                    className={styles.cardList__load}
+                >
+                    Ещё
+                </button>
+            )}
+        </>
     );
 };
 
