@@ -7,7 +7,7 @@ import Techs from '../Techs/Techs';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
-import Register from '../Register/Register';
+import AuthTemplate from '../AuthTemplate/AuthTemplate';
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
             {/*<SavedMovies/>*/}
             {/*<Footer/>*/}
             {/*<Profile/>*/}
-            <Register/>
+            <AuthTemplate/>
         </div>
     );
 }
