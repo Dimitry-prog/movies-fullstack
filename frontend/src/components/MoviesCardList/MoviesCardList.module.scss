@@ -1,0 +1,24 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.cardList {
+  @include max-width-center;
+  padding: 70px 70px 80px;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  button {
+    @include custom-font-size(12px, 15px);
+    width: 100%;
+    padding: 10px;
+    margin-top: 60px;
+    font-weight: $font-weight-500;
+    border-radius: $border-radius-xm;
+    color: $white-color;
+    background-color: $secondary-color-light;
+  }
+}

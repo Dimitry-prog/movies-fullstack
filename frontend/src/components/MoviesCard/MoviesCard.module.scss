@@ -2,8 +2,6 @@
 @import "src/styles/variables.scss";
 
 .card {
-  @include max-width-center;
-  padding: 20px 70px;
   display: flex;
   justify-content: space-between;
   background-color: $secondary-color-light;
