@@ -20,10 +20,10 @@ const Sidebar = () => {
                                 <Link to='/'>Главная</Link>
                             </li>
                             <li>
-                                <Link to='/films'>Фильмы</Link>
+                                <Link to='/movies'>Фильмы</Link>
                             </li>
                             <li>
-                                <Link to='/favoriute'>Сохранённые фильмы</Link>
+                                <Link to='/saved-movies'>Сохранённые фильмы</Link>
                             </li>
                         </ul>
                     </nav>

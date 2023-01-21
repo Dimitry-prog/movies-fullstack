@@ -1,31 +1,27 @@
 import styles from './App.module.scss';
 import Header from '../Header/Header';
-import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
-import SearchForm from '../SearchForm/SearchForm';
-import Techs from '../Techs/Techs';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import SavedMovies from '../SavedMovies/SavedMovies';
-import Profile from '../Profile/Profile';
-import AuthTemplate from '../AuthTemplate/AuthTemplate';
-import NotFound from '../NotFound/NotFound';
 import Sidebar from '../Sidebar/Sidebar';
+import routesConfig from '../../routes/routesConfig';
+import {Route, Routes} from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 
 function App() {
     return (
-        <div className={styles.app}>
-            {/*<Header/>*/}
-            {/*<Home/>*/}
-            {/*<SearchForm/>*/}
-            {/*<MoviesCardList/>*/}
-            {/*<SavedMovies/>*/}
-            {/*<Footer/>*/}
-            {/*<Profile/>*/}
-            {/*<AuthTemplate/>*/}
-            {/*<NotFound/>*/}
+        <>
             <Sidebar/>
-        </div>
+            <Loader/>
+            <Routes>
+                {routesConfig.map((route, index) => (
+                    <Route
+                        key={index}
+                        path={route.path}
+                        element={route.component}
+                    />
+                ))}
+            </Routes>
+        </>
     );
 }
 

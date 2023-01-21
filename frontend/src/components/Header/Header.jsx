@@ -31,10 +31,10 @@ const Header = () => {
                         <nav className={styles.header__nav}>
                             <ul className={styles.header__list}>
                                 <li className={styles.header__item}>
-                                    <NavLink to='/films'>Фильмы</NavLink>
+                                    <NavLink to='/movies'>Фильмы</NavLink>
                                 </li>
                                 <li className={styles.header__item}>
-                                    <NavLink to='/favoriute'>Сохранённые фильмы</NavLink>
+                                    <NavLink to='/saved-movies'>Сохранённые фильмы</NavLink>
                                 </li>
                             </ul>
                             <Link to='/profile' className={styles.profile}>

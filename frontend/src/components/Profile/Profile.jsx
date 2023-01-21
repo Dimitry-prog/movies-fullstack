@@ -15,7 +15,7 @@ const Profile = () => {
                 <span>pochta@yandex.ru</span>
             </div>
             <Link to='/edit-profile' className={styles.profile__edit}>Редактировать</Link>
-            <Link to='/signin' className={styles.profile__signout}>Выйти из аккаунта</Link>
+            <Link to='/signout' className={styles.profile__signout}>Выйти из аккаунта</Link>
         </section>
     );
 };

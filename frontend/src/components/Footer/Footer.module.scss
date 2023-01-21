@@ -2,6 +2,8 @@
 @import "src/styles/variables.scss";
 
 .footer {
+  background-color: $primary-color;
+  
   &__container {
     @include max-width-center;
     padding: 0 70px 20px;

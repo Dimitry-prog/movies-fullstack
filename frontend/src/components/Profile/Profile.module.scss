@@ -3,6 +3,7 @@
 
 .profile {
   @include max-width-center;
+  width: 100%;
   padding: 75px 70px 70px;
   min-height: calc(100vh - 78px);
   display: flex;

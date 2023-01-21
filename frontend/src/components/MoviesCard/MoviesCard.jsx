@@ -4,7 +4,7 @@ import movieImg from '../../images/movieImg.png';
 
 const MoviesCard = () => {
     const [like, setLike] = useState(false);
-    const [savedFilm, setSavedFilm] = useState(true);
+    const [savedFilm, setSavedFilm] = useState(false);
 
     return (
         <div className={styles.card}>

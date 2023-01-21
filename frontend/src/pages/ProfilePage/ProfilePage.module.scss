@@ -1,13 +1,9 @@
 @import "src/styles/mixins.scss";
 @import "src/styles/variables.scss";
 
-.cardList {
-  @include max-width-center;
+.profile {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 40px;
 
-  @media screen and (max-width: 450px) {
-    gap: 20px;
-  }
 }
