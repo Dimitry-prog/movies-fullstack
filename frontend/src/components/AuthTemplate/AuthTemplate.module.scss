@@ -17,6 +17,12 @@
     justify-content: inherit;
   }
 
+  a {
+    &:hover {
+      font-weight: $font-weight-500;
+    }
+  }
+
   header {
     display: flex;
     flex-direction: column;
@@ -87,6 +93,10 @@
       border-radius: $border-radius-s;
       color: $white-color;
       background-color: $accent-color-blue;
+
+      &:hover {
+        opacity: $opacity-m;
+      }
 
       @media screen and (max-width: 450px) {
         @include custom-font-size(12px, 15px);

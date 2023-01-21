@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from './Sidebar.module.scss';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import profileIcon from '../../images/profile_icon.svg';
 
 const Sidebar = () => {
@@ -17,13 +17,13 @@ const Sidebar = () => {
                     <nav>
                         <ul>
                             <li>
-                                <Link to='/'>Главная</Link>
+                                <NavLink to='/'>Главная</NavLink>
                             </li>
                             <li>
-                                <Link to='/movies'>Фильмы</Link>
+                                <NavLink to='/movies'>Фильмы</NavLink>
                             </li>
                             <li>
-                                <Link to='/saved-movies'>Сохранённые фильмы</Link>
+                                <NavLink to='/saved-movies'>Сохранённые фильмы</NavLink>
                             </li>
                         </ul>
                     </nav>

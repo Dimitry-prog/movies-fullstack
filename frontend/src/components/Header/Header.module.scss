@@ -74,6 +74,10 @@
         @include custom-font-size(10px, 16px);
       }
 
+      &:hover {
+        opacity: $opacity-m;
+      }
+
       &_signin {
         padding: 8px 20px;
         border-radius: $border-radius-s;

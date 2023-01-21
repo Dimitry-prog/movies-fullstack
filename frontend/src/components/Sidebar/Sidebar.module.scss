@@ -54,6 +54,10 @@ button {
     background-image: url(../../images/sidebalClose.svg);
     background-repeat: no-repeat;
     background-position: center center;
+
+    &:hover {
+      opacity: $opacity-m;
+    }
   }
 
   nav {
@@ -74,6 +78,13 @@ button {
     li {
       @include custom-font-size(18px, 22px);
     }
+
+    a {
+
+      &:hover {
+        font-weight: $font-weight-500;
+      }
+    }
   }
 
   .profile {
@@ -87,6 +98,10 @@ button {
     font-weight: $font-weight-500;
     @include custom-font-size(13px, 12px);
     color: $white-color;
+
+    &:hover {
+      opacity: $opacity-m;
+    }
 
     img {
       width: 26px;

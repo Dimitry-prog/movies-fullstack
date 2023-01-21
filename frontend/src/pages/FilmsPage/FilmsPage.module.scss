@@ -34,6 +34,10 @@
     color: $white-color;
     background-color: $secondary-color-light;
 
+    &:hover {
+      opacity: $opacity-m;
+    }
+
     @media screen and (max-width: 450px) {
       margin: 70px 0;
     }

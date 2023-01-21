@@ -3,7 +3,7 @@
 
 .footer {
   background-color: $primary-color;
-  
+
   &__container {
     @include max-width-center;
     padding: 0 70px 20px;
@@ -65,6 +65,10 @@
 
     a {
       @include custom-font-size(13px, 16px);
+
+      &:hover {
+        font-weight: $font-weight-500;
+      }
 
       @media screen and (max-width: 450px) {
         @include custom-font-size(12px, 15px);

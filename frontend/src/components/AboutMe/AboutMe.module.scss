@@ -98,6 +98,10 @@
     a {
       @include custom-font-size(14px, 17px);
       font-weight: $font-weight-500;
+
+      &:hover {
+        opacity: $opacity-m;
+      }
     }
 
     img {
@@ -146,6 +150,10 @@
       background-image: url(../../images/arrow_icon.svg);
       background-repeat: no-repeat;
       background-position: right bottom 50%;
+
+      &:hover {
+        font-weight: $font-weight-500;
+      }
 
       @media screen and (max-width: 770px) {
         @include custom-font-size(28px, 50px);

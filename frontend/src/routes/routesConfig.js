@@ -2,10 +2,9 @@ import HomePage from '../pages/HomePage/HomePage';
 import NotFound from '../components/NotFound/NotFound';
 import FilmsPage from '../pages/FilmsPage/FilmsPage';
 import FavouritesPage from '../pages/FavouritesPage/FavouritesPage';
-import Register from '../components/Register/Register';
-import Login from '../components/Login/Login';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import AuthTemplate from '../components/AuthTemplate/AuthTemplate';
+import EditProfile from '../components/EditProfile/EditProfile';
 
 
 const routesConfig = [
@@ -32,6 +31,10 @@ const routesConfig = [
     {
         path: '/profile',
         component: <ProfilePage/>,
+    },
+    {
+        path: '/edit-profile',
+        component: <EditProfile/>,
     },
     {
         path: '*',

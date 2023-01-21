@@ -66,6 +66,10 @@
     color: $white-color;
     background-color: $accent-color-blue;
     border-radius: $border-radius-xxl;
+
+    &:hover {
+      opacity: $opacity-m;
+    }
   }
 
   &__checkbox {
