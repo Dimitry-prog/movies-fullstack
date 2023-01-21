@@ -9,21 +9,38 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media screen and (max-width: 770px) {
+      padding: 15px 30px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 15px;
+    }
   }
 
   &_hero {
     background-color: $accent-color-blue-light;
   }
 
-  &__logo {
+  .logo {
     width: 38px;
     height: 38px;
+
+    img {
+      width: 38px;
+      height: 38px;
+    }
   }
 
   &__nav {
     display: flex;
     align-items: center;
     gap: 50px;
+
+    @media screen and (max-width: 770px) {
+      display: none;
+    }
 
     &_hero {
 
@@ -39,6 +56,10 @@
       display: flex;
       align-items: center;
       gap: 50px;
+
+      @media screen and (max-width: 450px) {
+        gap: 25px;
+      }
     }
   }
 
@@ -49,16 +70,24 @@
       @include custom-font-size(12px, 16px);
       font-weight: $font-weight-500;
 
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(10px, 16px);
+      }
+
       &_signin {
         padding: 8px 20px;
         border-radius: $border-radius-s;
         color: $black-color;
         background-color: $accent-color-green;
+
+        @media screen and (max-width: 450px) {
+          padding: 5px 12px;
+        }
       }
     }
   }
 
-  button {
+  .profile {
     width: 100px;
     padding: 2px;
     display: flex;
@@ -72,10 +101,20 @@
     img {
       width: 26px;
       height: 26px;
-      padding: 5px;
+      padding: 6px;
       color: $white-color;
       background-color: $primary-color-light;
       border-radius: $border-radius-xxl;
+    }
+  }
+
+  .burger {
+    width: 44px;
+    height: 44px;
+    background-image: url(../../images/burger.svg);
+
+    @media screen and (min-width: 769px) {
+      display: none;
     }
   }
 }

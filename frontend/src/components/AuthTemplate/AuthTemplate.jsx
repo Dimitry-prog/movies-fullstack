@@ -4,10 +4,10 @@ import logo from '../../images/logo.svg';
 import {Link} from 'react-router-dom';
 
 const AuthTemplate = () => {
-    const [isUserExist, setIsUserExist] = useState(false);
+    const [isUserExist, setIsUserExist] = useState(true);
 
     return (
-        <div className={styles.register}>
+        <div className={styles.authTemplate}>
             <header>
                 <Link to='/' className={styles.logo}><img src={logo} alt="logo"/></Link>
                 <h1>{isUserExist ? 'Рады видеть!' : 'Добро пожаловать!'}</h1>
@@ -35,7 +35,7 @@ const AuthTemplate = () => {
                         {isUserExist ? 'Войти' : 'Зарегистрироваться'}
                     </button>
                 </form>
-                <div className={styles.register__signin}>
+                <div className={styles.authTemplate__signin}>
                     <p>
                         {isUserExist ? 'Ещё не зарегистрированы?' : 'Уже зарегистрированы?'}
                     </p>

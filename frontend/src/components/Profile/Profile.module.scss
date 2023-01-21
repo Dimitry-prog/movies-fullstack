@@ -10,6 +10,15 @@
   align-items: center;
   justify-content: center;
 
+  @media screen and (max-width: 770px) {
+    min-height: calc(100vh - 74px);
+  }
+
+  @media screen and (max-width: 450px) {
+    padding: 70px 30px 40px;
+    justify-content: inherit;
+  }
+
   h2 {
     @include custom-font-size(24px, 29px);
     margin: 0 0 125px;
@@ -42,10 +51,18 @@
 
   a {
     @include custom-font-size(13px, 16px);
+
+    @media screen and (max-width: 450px) {
+      @include custom-font-size(12px, 15px);
+    }
   }
 
   & > a:first-of-type {
     margin-top: 220px;
+
+    @media screen and (max-width: 450px) {
+      margin-top: auto;
+    }
   }
 
   &__signout {

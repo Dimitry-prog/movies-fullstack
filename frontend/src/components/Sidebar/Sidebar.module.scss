@@ -1,0 +1,100 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+button {
+  color: $white-color;
+  padding: 20px;
+}
+
+
+.sidebar {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  transition: $transition-m;
+  z-index: 200;
+
+  &.open {
+    visibility: visible;
+  }
+
+  div {
+    width: 520px;
+    height: 100%;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: -520px;
+    background-color: $primary-color;
+    transition: $transition-m;
+
+    @media screen and (max-width: 550px) {
+      width: 320px;
+      right: -320px;
+    }
+
+    &.open {
+      right: 0;
+    }
+  }
+
+  button {
+    position: absolute;
+    right: 22px;
+    top: 22px;
+    width: 22px;
+    height: 22px;
+    background-image: url(../../images/sidebalClose.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  nav {
+    padding-top: 105px;
+    flex: 1 1 auto;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+
+    @media screen and (max-width: 450px) {
+      gap: 24px;
+    }
+
+    li {
+      @include custom-font-size(18px, 22px);
+    }
+  }
+
+  .profile {
+    width: 100px;
+    padding: 2px;
+    margin-bottom: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+    font-weight: $font-weight-500;
+    @include custom-font-size(13px, 12px);
+    color: $white-color;
+
+    img {
+      width: 26px;
+      height: 26px;
+      padding: 6px;
+      color: $white-color;
+      background-color: $primary-color-light;
+      border-radius: $border-radius-xxl;
+    }
+  }
+}

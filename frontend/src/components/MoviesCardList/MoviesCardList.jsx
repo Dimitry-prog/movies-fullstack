@@ -3,7 +3,7 @@ import styles from './MoviesCardList.module.scss';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
 const MoviesCardList = () => {
-    const [pageFilms, setPageFilms] = useState(false);
+    const [pageFilms, setPageFilms] = useState(true);
 
     return (
         <>

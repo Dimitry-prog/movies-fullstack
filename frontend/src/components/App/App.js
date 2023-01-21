@@ -9,6 +9,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import AuthTemplate from '../AuthTemplate/AuthTemplate';
 import NotFound from '../NotFound/NotFound';
+import Sidebar from '../Sidebar/Sidebar';
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
             {/*<Footer/>*/}
             {/*<Profile/>*/}
             {/*<AuthTemplate/>*/}
-            <NotFound/>
+            {/*<NotFound/>*/}
+            <Sidebar/>
         </div>
     );
 }

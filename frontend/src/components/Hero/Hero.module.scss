@@ -12,10 +12,36 @@
     background-repeat: no-repeat;
     background-position: bottom 60px right 70px;
 
+    @media screen and (max-width: 770px) {
+      min-height: 100vh;
+      padding: 0 40px 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-position: bottom 70px right 40px;
+      background-size: 680px;
+    }
+
+    @media screen and (max-width: 450px) {
+      min-height: 70vh;
+      align-items: flex-start;
+      padding: 150px 10px 40px;
+      background-position: bottom 40px right -100px;
+    }
+
     h1 {
       @include custom-font-size(40px, 52px);
       letter-spacing: $letter-spacing-s;
       max-width: 626px;
+
+      @media screen and (max-width: 770px) {
+        max-width: 400px;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(31px, 39px);
+      }
     }
   }
 }

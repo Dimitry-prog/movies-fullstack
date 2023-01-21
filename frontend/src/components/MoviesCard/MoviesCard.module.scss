@@ -6,20 +6,41 @@
   justify-content: space-between;
   background-color: $secondary-color-light;
 
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+  }
+
   &__left {
     padding: 22px;
+
+    @media screen and (max-width: 450px) {
+      padding: 14px 12px;
+      order: 2;
+      display: grid;
+      grid-template-columns: 1fr min-content;
+    }
   }
 
   h3 {
     @include custom-font-size(18px, 22px);
     margin-bottom: 13px;
     font-weight: $font-weight-500;
+
+    @media screen and (max-width: 450px) {
+      @include custom-font-size(12px, 15px);
+      margin-bottom: 8px;
+    }
   }
 
   p {
     @include custom-font-size(11px, 13px);
     margin-bottom: 30px;
     color: $gray-color;
+
+    @media screen and (max-width: 450px) {
+      margin-bottom: 0;
+      grid-row: 2;
+    }
   }
 
   button {
@@ -38,11 +59,20 @@
     &.saved {
       background-image: url(../../images/cancel_icon.svg);
     }
+
+    @media screen and (max-width: 450px) {
+      grid-column: 2 / -1;
+    }
   }
 
   img {
     max-width: 220px;
     padding: 6px;
     object-fit: cover;
+
+    @media screen and (max-width: 450px) {
+      max-width: 100%;
+      padding: 0;
+    }
   }
 }

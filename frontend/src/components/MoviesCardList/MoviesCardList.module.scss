@@ -7,14 +7,22 @@
   flex-direction: column;
   gap: 40px;
 
+  @media screen and (max-width: 450px) {
+    gap: 20px;
+  }
+
   &__load {
     @include custom-font-size(12px, 15px);
     width: 100%;
     padding: 10px;
-    margin-top: 60px;
+    margin-top: 90px;
     font-weight: $font-weight-500;
     border-radius: $border-radius-xm;
     color: $white-color;
     background-color: $secondary-color-light;
+
+    @media screen and (max-width: 450px) {
+      margin: 70px 0;
+    }
   }
 }
