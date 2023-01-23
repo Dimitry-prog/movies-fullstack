@@ -10,12 +10,11 @@
 
   &__container {
     margin: 70px 70px 0;
-    padding-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    border-bottom: 1px solid $gray-color-light;
+    position: relative;
 
     @media screen and (max-width: 770px) {
       margin: 90px 30px 0;
@@ -32,6 +31,7 @@
     padding: 12px;
     border: 1px solid $gray-color-light;
     border-radius: $border-radius-xxl;
+    position: absolute;
 
     @media screen and (max-width: 450px) {
       display: none;
@@ -42,8 +42,10 @@
     @include custom-font-size(28px, 34px);
     width: 100%;
     min-height: 48px;
+    padding: 20px 60px 20px;
     font-weight: $font-weight-500;
     color: $gray-color;
+    border-bottom: 1px solid $gray-color-light;
 
     @media screen and (max-width: 450px) {
       @include custom-font-size(18px, 22px);
@@ -57,7 +59,12 @@
         text-align: start;
       }
     }
+
+    &:focus {
+      border-bottom-color: $white-color;;
+    }
   }
+
 
   button {
     @include custom-font-size(11px, 18px);
@@ -66,6 +73,8 @@
     color: $white-color;
     background-color: $accent-color-blue;
     border-radius: $border-radius-xxl;
+    position: absolute;
+    right: 0;
 
     &:hover {
       opacity: $opacity-m;

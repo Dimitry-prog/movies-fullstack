@@ -3,7 +3,9 @@ import styles from './Loader.module.scss';
 
 const Preloader = () => {
     return (
-        <div className={styles.loader}/>
+        <div className={styles.loader}>
+            <span></span>
+        </div>
     )
 };
 

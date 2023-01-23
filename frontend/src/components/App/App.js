@@ -11,7 +11,6 @@ function App() {
     return (
         <>
             <Sidebar/>
-            <Loader/>
             <Routes>
                 {routesConfig.map((route, index) => (
                     <Route

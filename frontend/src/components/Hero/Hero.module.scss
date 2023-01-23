@@ -8,25 +8,25 @@
     @include max-width-center;
     min-height: 560px;
     padding: 50px 70px 60px;
-    background-image: url(../../images/hero_icon.svg);
-    background-repeat: no-repeat;
-    background-position: bottom 60px right 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    overflow: hidden;
 
     @media screen and (max-width: 770px) {
       min-height: 100vh;
-      padding: 0 40px 70px;
+      padding: 70px 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-position: bottom 70px right 40px;
-      background-size: 680px;
+      gap: 140px;
     }
 
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: 550px) {
       min-height: 70vh;
       align-items: flex-start;
+      gap: 60px;
       padding: 150px 10px 40px;
-      background-position: bottom 40px right -100px;
     }
 
     h1 {
@@ -41,6 +41,17 @@
 
       @media screen and (max-width: 450px) {
         @include custom-font-size(31px, 39px);
+      }
+    }
+
+    img {
+      width: 722px;
+      object-fit: cover;
+      align-self: flex-end;
+
+      @media screen and (max-width: 770px) {
+        width: 680px;
+        align-self: center;
       }
     }
   }

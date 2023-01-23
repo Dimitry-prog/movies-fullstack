@@ -68,18 +68,18 @@
 
       @media screen and (max-width: 770px) {
         margin-top: 80px;
-      }
-
-      @media screen and (max-width: 450px) {
-        margin: 50px 55px 0;
         flex-wrap: wrap;
         justify-content: flex-start;
       }
 
+      @media screen and (max-width: 450px) {
+        margin: 50px 55px 0;
+      }
+
       li {
         @include custom-font-size(14px, 17px);
-        width: 85px;
-        height: 60px;
+        min-width: 84px;
+        padding: 21px 16px;
         display: flex;
         justify-content: center;
         align-items: center;

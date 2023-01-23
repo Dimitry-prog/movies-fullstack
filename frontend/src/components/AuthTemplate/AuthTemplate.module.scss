@@ -77,6 +77,10 @@
       border-radius: $border-radius-xm;
       color: $white-color;
       background-color: $secondary-color-light;
+
+      &:focus {
+        background-color: $gray-color-light;
+      }
     }
 
     span {

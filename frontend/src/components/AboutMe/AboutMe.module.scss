@@ -21,7 +21,7 @@
       padding-bottom: 25px;
       border-bottom: 1px solid $gary-color-light-ultra;
 
-      @media screen and (max-width: 450px) {
+      @media screen and (max-width: 550px) {
         @include custom-font-size(18px, 22px);
       }
 
@@ -38,14 +38,14 @@
       gap: 50px;
     }
 
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: 550px) {
       margin-bottom: 70px;
       flex-direction: column;
       gap: 40px;
     }
 
     & > div {
-      @media screen and (max-width: 450px) {
+      @media screen and (max-width: 550px) {
         order: 2;
       }
     }
@@ -60,7 +60,7 @@
         @include custom-font-size(40px, 40px);
       }
 
-      @media screen and (max-width: 450px) {
+      @media screen and (max-width: 550px) {
         @include custom-font-size(30px, 36px);
         margin: 0 0 20px;
       }
@@ -76,7 +76,7 @@
         margin-bottom: 20px;
       }
 
-      @media screen and (max-width: 450px) {
+      @media screen and (max-width: 550px) {
         @include custom-font-size(11px, 16px);
       }
     }
@@ -89,7 +89,7 @@
         @include custom-font-size(12px, 18px);
       }
 
-      @media screen and (max-width: 450px) {
+      @media screen and (max-width: 550px) {
         @include custom-font-size(11px, 16px);
         margin-bottom: 40px;
       }
@@ -105,13 +105,18 @@
     }
 
     img {
-      width: 100%;
+      width: 270px;
       height: 327px;
       object-fit: cover;
       margin-top: 92px;
       border-radius: $border-radius-m;
 
-      @media screen and (max-width: 450px) {
+      @media screen and (max-width: 770px) {
+        width: 250px;
+      }
+
+      @media screen and (max-width: 550px) {
+        width: 292px;
         margin-top: 60px;
       }
     }
@@ -122,7 +127,7 @@
     margin-bottom: 50px;
     color: $gray-color;
 
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: 550px) {
       @include custom-font-size(14px, 20px);
       margin-bottom: 40px;
     }
@@ -159,7 +164,7 @@
         @include custom-font-size(28px, 50px);
       }
 
-      @media screen and (max-width: 450px) {
+      @media screen and (max-width: 550px) {
         @include custom-font-size(18px, 28px);
         background-size: 18px;
       }

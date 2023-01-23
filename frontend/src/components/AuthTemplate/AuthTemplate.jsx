@@ -17,18 +17,18 @@ const AuthTemplate = ({isUserExist}) => {
                     {isUserExist ? '' : (
                         <div>
                             <p>Имя</p>
-                            <input type="text" placeholder='Введите ваше имя'/>
+                            <input type="text" placeholder='Введите ваше имя' required min={2} max={30}/>
                             <span></span>
                         </div>
                     )}
                     <div>
                         <p>E-mail</p>
-                        <input type="text" placeholder='Введите вашу почту'/>
+                        <input type="email" placeholder='Введите вашу почту' required/>
                         <span></span>
                     </div>
                     <div>
                         <p>Пароль</p>
-                        <input type="text" placeholder='Введите пароль'/>
+                        <input type="password" placeholder='Введите пароль' required min={8} max={16}/>
                         <span></span>
                     </div>
                     <button type='submit'>

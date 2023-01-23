@@ -8,8 +8,8 @@ const SearchForm = () => {
         <form className={styles.form}>
             <div className={styles.form__container}>
                 <img src={searchIcon} alt="search"/>
-                <input type="text" placeholder='Фильм'/>
-                <button type='submit'>Найти</button>
+                <input type="text" placeholder='Фильм' required/>
+                <button type='submit' aria-label='submit'>Найти</button>
             </div>
             <div className={styles.form__checkbox}>
                 <FilterCheckbox/>
