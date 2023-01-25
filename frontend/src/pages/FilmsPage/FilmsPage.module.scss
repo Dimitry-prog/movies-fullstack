@@ -1,0 +1,45 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.films {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex: 1 1 auto;
+    background-color: $primary-color;
+  }
+
+  &__movies {
+    @include max-width-center;
+    padding: 70px 70px;
+
+    @media screen and (max-width: 770px) {
+      padding: 60px 30px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 40px 10px;
+    }
+  }
+
+  &__load {
+    @include custom-font-size(12px, 15px);
+    width: 100%;
+    padding: 10px;
+    margin-top: 90px;
+    font-weight: $font-weight-500;
+    border-radius: $border-radius-xm;
+    color: $white-color;
+    background-color: $secondary-color-light;
+
+    &:hover {
+      opacity: $opacity-m;
+    }
+
+    @media screen and (max-width: 450px) {
+      margin: 70px 0;
+    }
+  }
+}

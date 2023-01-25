@@ -1,0 +1,115 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.about {
+  background-color: $primary-color;
+
+  &__container {
+    @include max-width-center;
+    padding: 110px 70px;
+
+    @media screen and (max-width: 770px) {
+      padding: 90px 50px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 70px 14px;
+    }
+
+    h3 {
+      @include custom-font-size(22px, 27px);
+      letter-spacing: $letter-spacing-s;
+      padding-bottom: 25px;
+      border-bottom: 1px solid $gary-color-light-ultra;
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(18px, 22px);
+      }
+    }
+  }
+
+  &__description {
+    margin: 96px 0 110px;
+    display: flex;
+    gap: 40px;
+
+    @media screen and (max-width: 450px) {
+      margin: 60px 0;
+      flex-direction: column;
+      gap: 55px;
+    }
+
+    h4 {
+      @include custom-font-size(20px, 24px);
+      margin-bottom: 26px;
+      letter-spacing: $letter-spacing-s;
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(18px, 22px);
+        margin-bottom: 16px;
+      }
+    }
+
+    p {
+      @include custom-font-size(14px, 20px);
+
+      @media screen and (max-width: 770px) {
+        @include custom-font-size(12px, 18px);
+      }
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(11px, 16px);
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__road {
+    width: 100%;
+    display: flex;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+
+      p {
+        @include custom-font-size(14px, 17px);
+
+        @media screen and (max-width: 450px) {
+          @include custom-font-size(11px, 13px);
+        }
+      }
+
+      span {
+        @include custom-font-size(14px, 17px);
+        color: $gray-color;
+
+        @media screen and (max-width: 450px) {
+          @include custom-font-size(11px, 13px);
+        }
+      }
+    }
+
+    &_first {
+      width: 25%;
+
+      p {
+        padding: 9px 14px;
+        color: $black-color;
+        background-color: $accent-color-green;
+      }
+    }
+
+    &_second {
+      width: 100%;
+
+      p {
+        padding: 9px 14px;
+        background-color: $primary-color-light;
+      }
+    }
+
+  }
+}

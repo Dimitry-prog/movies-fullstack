@@ -1,0 +1,96 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.techs {
+  background-color: $secondary-color;
+
+  &__container {
+    @include max-width-center;
+    padding: 100px 70px;
+
+    @media screen and (max-width: 770px) {
+      padding: 90px 50px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 70px 14px;
+    }
+
+    h3 {
+      @include custom-font-size(22px, 27px);
+      letter-spacing: $letter-spacing-s;
+      padding-bottom: 25px;
+      border-bottom: 1px solid $gary-color-light-ultra;
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(18px, 22px);
+      }
+    }
+
+    h2 {
+      @include custom-font-size(50px, 58px);
+      max-width: 400px;
+      margin: 116px auto 26px;
+      letter-spacing: $letter-spacing-s;
+      text-align: center;
+
+      @media screen and (max-width: 770px) {
+        margin: 96px auto 22px;
+      }
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(30px, 36px);
+        margin-top: 60px;
+      }
+    }
+
+    p {
+      @include custom-font-size(14px, 20px);
+      max-width: 400px;
+      margin: 0 auto;
+      letter-spacing: $letter-spacing-s;
+      text-align: center;
+
+      @media screen and (max-width: 770px) {
+        @include custom-font-size(12px, 18px);
+      }
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(11px, 16px);
+      }
+    }
+
+    ul {
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+      @media screen and (max-width: 770px) {
+        margin-top: 80px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      @media screen and (max-width: 450px) {
+        margin: 50px 55px 0;
+      }
+
+      li {
+        @include custom-font-size(14px, 17px);
+        min-width: 84px;
+        padding: 21px 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: $letter-spacing-s;
+        border-radius: $border-radius-m;
+        background-color: $primary-color-light;
+
+        @media screen and (max-width: 770px) {
+          @include custom-font-size(12px, 15px);
+        }
+      }
+    }
+  }
+}

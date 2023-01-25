@@ -1,0 +1,11 @@
+@import './variables';
+
+@mixin custom-font-size($size, $line-height) {
+  font-size: $size;
+  line-height: $line-height;
+}
+
+@mixin max-width-center {
+  max-width: $max-width;
+  margin: 0 auto;
+}

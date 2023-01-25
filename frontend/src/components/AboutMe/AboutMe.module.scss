@@ -1,0 +1,173 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.aboutMe {
+
+  &__container {
+    @include max-width-center;
+    padding: 110px 70px 125px;
+
+    @media screen and (max-width: 770px) {
+      padding: 90px 50px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 70px 14px;
+    }
+
+    h3 {
+      @include custom-font-size(22px, 27px);
+      letter-spacing: $letter-spacing-s;
+      padding-bottom: 25px;
+      border-bottom: 1px solid $gary-color-light-ultra;
+
+      @media screen and (max-width: 550px) {
+        @include custom-font-size(18px, 22px);
+      }
+
+    }
+  }
+
+  &__info {
+    margin-bottom: 100px;
+    display: flex;
+    gap: 270px;
+
+    @media screen and (max-width: 770px) {
+      margin-bottom: 90px;
+      gap: 50px;
+    }
+
+    @media screen and (max-width: 550px) {
+      margin-bottom: 70px;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    & > div {
+      @media screen and (max-width: 550px) {
+        order: 2;
+      }
+    }
+
+    h2 {
+      @include custom-font-size(50px, 58px);
+      max-width: 400px;
+      margin: 86px 0 18px;
+      letter-spacing: $letter-spacing-s;
+
+      @media screen and (max-width: 770px) {
+        @include custom-font-size(40px, 40px);
+      }
+
+      @media screen and (max-width: 550px) {
+        @include custom-font-size(30px, 36px);
+        margin: 0 0 20px;
+      }
+    }
+
+    &_job {
+      @include custom-font-size(18px, 20px);
+      margin-bottom: 26px;
+      font-weight: $font-weight-500;
+
+      @media screen and (max-width: 770px) {
+        @include custom-font-size(12px, 18px);
+        margin-bottom: 20px;
+      }
+
+      @media screen and (max-width: 550px) {
+        @include custom-font-size(11px, 16px);
+      }
+    }
+
+    &_desc {
+      @include custom-font-size(14px, 22px);
+      margin-bottom: 81px;
+
+      @media screen and (max-width: 770px) {
+        @include custom-font-size(12px, 18px);
+      }
+
+      @media screen and (max-width: 550px) {
+        @include custom-font-size(11px, 16px);
+        margin-bottom: 40px;
+      }
+    }
+
+    a {
+      @include custom-font-size(14px, 17px);
+      font-weight: $font-weight-500;
+
+      &:hover {
+        opacity: $opacity-m;
+      }
+    }
+
+    img {
+      width: 270px;
+      height: 327px;
+      object-fit: cover;
+      margin-top: 92px;
+      border-radius: $border-radius-m;
+
+      @media screen and (max-width: 770px) {
+        width: 250px;
+      }
+
+      @media screen and (max-width: 550px) {
+        width: 292px;
+        margin-top: 60px;
+      }
+    }
+  }
+
+  h5 {
+    @include custom-font-size(18px, 20px);
+    margin-bottom: 50px;
+    color: $gray-color;
+
+    @media screen and (max-width: 550px) {
+      @include custom-font-size(14px, 20px);
+      margin-bottom: 40px;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    li {
+      padding-bottom: 20px;
+      border-bottom: 1px solid $gray-color-light;
+
+      @media screen and (max-width: 770px) {
+        border-bottom: 1px solid $gary-color-light-ultra-plus;
+      }
+    }
+
+    a {
+      @include custom-font-size(30px, 50px);
+      display: block;
+      width: 100%;
+      letter-spacing: $letter-spacing-s;
+      background-image: url(../../images/arrow_icon.svg);
+      background-repeat: no-repeat;
+      background-position: right bottom 50%;
+
+      &:hover {
+        font-weight: $font-weight-500;
+      }
+
+      @media screen and (max-width: 770px) {
+        @include custom-font-size(28px, 50px);
+      }
+
+      @media screen and (max-width: 550px) {
+        @include custom-font-size(18px, 28px);
+        background-size: 18px;
+      }
+    }
+  }
+}

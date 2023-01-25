@@ -1,0 +1,130 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.authTemplate {
+  max-width: 396px;
+  width: 100%;
+  height: 100vh;
+  padding: 70px 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media screen and (max-width: 450px) {
+    padding: 60px 30px 30px;
+    align-items: center;
+    justify-content: inherit;
+  }
+
+  a {
+    &:hover {
+      font-weight: $font-weight-500;
+    }
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .logo {
+      width: 38px;
+      height: 38px;
+      @media screen and (max-width: 450px) {
+        align-self: center;
+      }
+    }
+
+    h1 {
+      @include custom-font-size(24px, 29px);
+      font-weight: $font-weight-500;
+    }
+  }
+
+  main {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media screen and (max-width: 450px) {
+      padding-top: 80px;
+      flex: 1 1 auto;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media screen and (max-width: 450px) {
+      flex: 1 1 auto;
+    }
+
+    p {
+      @include custom-font-size(10px, 12px);
+      padding-bottom: 10px;
+      color: $gray-color;
+    }
+
+    input {
+      @include custom-font-size(13px, 16px);
+      width: 100%;
+      padding: 15px;
+      font-weight: $font-weight-500;
+      border-radius: $border-radius-xm;
+      color: $white-color;
+      background-color: $secondary-color-light;
+
+      &:focus {
+        background-color: $gray-color-light;
+      }
+    }
+
+    span {
+      @include custom-font-size(10px, 12px);
+      color: $accent-color-red;
+    }
+
+    button {
+      @include custom-font-size(14px, 17px);
+      width: 100%;
+      padding: 14px;
+      margin: 70px 0 0;
+      font-weight: $font-weight-500;
+      border-radius: $border-radius-s;
+      color: $white-color;
+      background-color: $accent-color-blue;
+
+      &:hover {
+        opacity: $opacity-m;
+      }
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(12px, 15px);
+        margin-top: auto;
+      }
+    }
+  }
+
+  &__signin {
+    @include custom-font-size(14px, 17px);
+    display: flex;
+    gap: 6px;
+    align-self: center;
+
+    @media screen and (max-width: 450px) {
+      @include custom-font-size(12px, 15px);
+    }
+
+    p {
+      color: $gray-color;
+    }
+
+    a {
+      color: $accent-color-blue;
+    }
+  }
+}

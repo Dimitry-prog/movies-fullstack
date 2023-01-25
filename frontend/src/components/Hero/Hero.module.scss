@@ -1,0 +1,58 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.hero {
+  background-color: $accent-color-blue-light;
+
+  &__container {
+    @include max-width-center;
+    min-height: 560px;
+    padding: 50px 70px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    overflow: hidden;
+
+    @media screen and (max-width: 770px) {
+      min-height: 100vh;
+      padding: 70px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 140px;
+    }
+
+    @media screen and (max-width: 550px) {
+      min-height: 70vh;
+      align-items: flex-start;
+      gap: 60px;
+      padding: 150px 10px 40px;
+    }
+
+    h1 {
+      @include custom-font-size(40px, 52px);
+      letter-spacing: $letter-spacing-s;
+      max-width: 626px;
+
+      @media screen and (max-width: 770px) {
+        max-width: 400px;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(31px, 39px);
+      }
+    }
+
+    img {
+      width: 722px;
+      object-fit: cover;
+      align-self: flex-end;
+
+      @media screen and (max-width: 770px) {
+        width: 680px;
+        align-self: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.footer {
+  background-color: $primary-color;
+
+  &__container {
+    @include max-width-center;
+    padding: 0 70px 20px;
+
+    @media screen and (max-width: 770px) {
+      padding: 0 30px 20px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 0 10px 20px;
+    }
+  }
+
+  h5 {
+    @include custom-font-size(13px, 16px);
+    margin-top: 80px;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid $gray-color-light;
+    color: $gray-color;
+
+    @media screen and (max-width: 450px) {
+      @include custom-font-size(12px, 15px);
+    }
+  }
+
+  nav {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media screen and (max-width: 450px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    p {
+      @include custom-font-size(13px, 16px);
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(12px, 15px);
+        color: $gray-color;
+        order: 2;
+      }
+    }
+
+    ul {
+      display: flex;
+      gap: 20px;
+
+      @media screen and (max-width: 450px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+    }
+
+    a {
+      @include custom-font-size(13px, 16px);
+
+      &:hover {
+        font-weight: $font-weight-500;
+      }
+
+      @media screen and (max-width: 450px) {
+        @include custom-font-size(12px, 15px);
+      }
+    }
+  }
+
+}

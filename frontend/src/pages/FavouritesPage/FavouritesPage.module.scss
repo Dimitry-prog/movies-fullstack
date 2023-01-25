@@ -1,0 +1,26 @@
+@import "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.favourites {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex: 1 1 auto;
+    background-color: $primary-color;
+  }
+
+  &__movies {
+    @include max-width-center;
+    padding: 70px 70px 150px;
+
+    @media screen and (max-width: 770px) {
+      padding: 60px 30px 150px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 40px 10px 150px;
+    }
+  }
+}

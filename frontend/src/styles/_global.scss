@@ -1,0 +1,14 @@
+@import "variables";
+
+#root {
+  font-family: $font-family-main;
+  font-weight: $font-weight-main;
+  font-style: $font-style-main;
+  color: $white-color;
+  background-color: $primary-color;
+}
+
+a.active {
+  padding-bottom: 5px;
+  border-bottom: 1px solid $white-color;
+}
