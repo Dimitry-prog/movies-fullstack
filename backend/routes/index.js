@@ -2,10 +2,10 @@ import Router from 'express';
 import userRouter from './UserRouter.js';
 import movieRouter from './MovieRouter.js';
 import handleAuthUser from '../middlewares/handleAuthUser.js';
-import { loginUser, logoutUser, registerUser } from '../controllers/AuthController.js';
+import {loginUser, logoutUser, registerUser} from '../controllers/AuthController.js';
 import NotFoundError from '../errors/NotFoundError .js';
-import { validationSignin, validationSignup } from '../helpers/validationCelebrate.js';
-import { ERRORS_MESSAGE } from '../utils/constants.js';
+import {validationSignin, validationSignup} from '../helpers/validationCelebrate.js';
+import {ERRORS_MESSAGE} from '../utils/constants.js';
 
 const router = new Router();
 

@@ -52,6 +52,10 @@
       padding: 15px;
       text-align: right;
       color: $white-color;
+
+      @media screen and (max-width: 490px) {
+        width: 85%;
+      }
     }
 
     span {

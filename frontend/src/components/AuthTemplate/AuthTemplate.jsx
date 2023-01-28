@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './AuthTemplate.module.scss';
 import logo from '../../images/logo.svg';
 import {Link} from 'react-router-dom';

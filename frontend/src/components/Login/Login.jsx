@@ -1,9 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './Login.module.scss';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import logo from '../../images/logo.svg';
+import {useDispatch, useSelector} from 'react-redux';
+import useFormValidation from '../../hooks/useFormvalidation';
+import {loginUser} from '../../api/authApi';
 
 const Login = () => {
+    const {values, errors, isValid, handleChange} = useFormValidation();
+    const {loading, error, isAuth} = useSelector((state) => state.auth)
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(loginUser(values));
+    };
+
     return (
         <div className={styles.login}>
             <header>
@@ -11,15 +24,26 @@ const Login = () => {
                 <h1>Рады видеть!</h1>
             </header>
             <main>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <p>E-mail</p>
-                        <input type="text" placeholder='Введите вашу почту'/>
+                        <input
+                            value={values.email || ''}
+                            onChange={handleChange}
+                            name="email"
+                            type="email"
+                            placeholder='Введите вашу почту'/>
                         <span></span>
                     </div>
                     <div>
                         <p>Пароль</p>
-                        <input type="text" placeholder='Введите пароль'/>
+                        <input
+                            value={values.password || ''}
+                            onChange={handleChange}
+                            name="password"
+                            type="password"
+                            placeholder='Введите пароль'
+                        />
                         <span></span>
                     </div>
                     <button type='submit'>Войти</button>

@@ -1,26 +1,53 @@
 import styles from './App.module.scss';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import Sidebar from '../Sidebar/Sidebar';
-import routesConfig from '../../routes/routesConfig';
-import {Route, Routes} from 'react-router-dom';
-import Loader from '../Loader/Loader';
-
+import {privateRoutes, publicRoutes} from '../../routes/routesConfig';
+import {Route, Routes, useNavigate} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
+import {checkUserToken} from '../../api/authApi';
 
 function App() {
+    const {isAuth} = useSelector((state) => state.auth);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (isAuth) {
+            // dispatch(getUserInfo({}))
+            navigate('/movies')
+        }
+    }, [isAuth])
+
+    useEffect(() => {
+        dispatch(checkUserToken({}))
+    }, []);
+
     return (
-        <>
-            <Sidebar/>
-            <Routes>
-                {routesConfig.map((route, index) => (
-                    <Route
-                        key={index}
-                        path={route.path}
-                        element={route.component}
-                    />
-                ))}
-            </Routes>
-        </>
+        // <>
+        //     <Sidebar/>
+        isAuth
+            ? (
+                <Routes>
+                    {privateRoutes.map((route, index) => (
+                        <Route
+                            key={index}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                </Routes>
+            ) : (
+                <Routes>
+                    {publicRoutes.map((route, index) => (
+                        <Route
+                            key={index}
+                            path={route.path}
+                            element={route.component}
+                        />
+                    ))}
+                </Routes>
+            )
+        // </>
     );
 }
 

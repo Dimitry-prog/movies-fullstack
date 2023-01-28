@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './Header.module.scss';
 import logo from '../../images/logo.svg';
 import profileIcon from '../../images/profile_icon.svg';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, useNavigate} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 const Header = () => {
-    const isAuth = false;
-    // const isAuth = true;
+    const {isAuth} = useSelector((state) => state.auth);
+
+    useEffect(() => {
+
+    }, [isAuth])
 
     return (
         <header className={`${styles.header} ${!isAuth ? `${styles.header_hero}` : ''}`}>
