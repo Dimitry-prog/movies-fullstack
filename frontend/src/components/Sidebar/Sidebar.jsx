@@ -19,19 +19,27 @@ const Sidebar = () => {
                 <nav>
                     <ul>
                         {!isAuth && (
-                            <li>
+                            <li
+                                onClick={() => dispatch(closeModal())}
+                            >
                                 <NavLink to='/'>Главная</NavLink>
                             </li>
                         )}
-                        <li>
+                        <li
+                            onClick={() => dispatch(closeModal())}
+                        >
                             <NavLink to='/movies'>Фильмы</NavLink>
                         </li>
-                        <li>
+                        <li
+                            onClick={() => dispatch(closeModal())}
+                        >
                             <NavLink to='/saved-movies'>Сохранённые фильмы</NavLink>
                         </li>
                     </ul>
                 </nav>
-                <Link to='/profile' className={styles.profile}>
+                <Link
+                    onClick={() => dispatch(closeModal())}
+                    to='/profile' className={styles.profile}>
                     Аккаунт
                     <img src={profileIcon} alt="profile"/>
                 </Link>
