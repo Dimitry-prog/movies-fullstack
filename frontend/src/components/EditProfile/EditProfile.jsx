@@ -3,9 +3,10 @@ import styles from './EditProfile.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {patchUserInfo} from '../../api/userApi';
 import useFormValidation from '../../hooks/useFormvalidation';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const EditProfile = () => {
+    const {user} = useSelector(state => state.user);
     const {values, errors, isValid, handleChange} = useFormValidation();
     const {success} = useSelector(state => state.user);
     const nameRef = useRef(null);
@@ -23,7 +24,7 @@ const EditProfile = () => {
 
     return (
         <section className={styles.profile}>
-            <h2>Привет, Виталий!</h2>
+            <h2>Привет, {user.name}!</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <p>Имя</p>
@@ -47,6 +48,9 @@ const EditProfile = () => {
                 <span></span>
                 <button type='submit' aria-label='submit form'>Сохранить</button>
             </form>
+            <Link to='/profile'>
+                Назад
+            </Link>
         </section>
     );
 };

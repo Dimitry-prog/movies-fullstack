@@ -35,6 +35,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
     }
 
     & > div:first-of-type {
@@ -44,17 +45,21 @@
     p {
       @include custom-font-size(11px, 13px);
       font-weight: $font-weight-500;
+      position: absolute;
+      left: 15px;
+      top: 15px;
     }
 
     input {
       @include custom-font-size(11px, 13px);
-      width: 90%;
-      padding: 15px;
+      width: 100%;
+      padding: 15px 15px 15px 60px;
       text-align: right;
+      border-radius: $border-radius-s;
       color: $white-color;
 
-      @media screen and (max-width: 490px) {
-        width: 85%;
+      &:focus {
+        background-color: $gray-color-light;
       }
     }
 
@@ -81,6 +86,19 @@
         @include custom-font-size(12px, 15px);
         margin-top: auto;
       }
+    }
+  }
+
+  a {
+    @include custom-font-size(13px, 16px);
+
+    &:hover {
+      opacity: $opacity-m;
+    }
+
+    @media screen and (max-width: 450px) {
+      @include custom-font-size(12px, 15px);
+      margin-top: 20px;
     }
   }
 }
