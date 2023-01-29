@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import styles from './EditProfile.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
-import {patchUserInfo} from '../../api/userApi';
+import {patchUserInfo} from '../../api/mainApi';
 import useFormValidation from '../../hooks/useFormvalidation';
 import {Link, useNavigate} from 'react-router-dom';
 

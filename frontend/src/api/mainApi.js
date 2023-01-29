@@ -1,20 +1,19 @@
 import axios from 'axios';
 import {BASE_URL} from '../utils/constants';
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {authApi} from './authApi';
 
-export const userApi = axios.create({
+export const mainApi = axios.create({
     baseURL: BASE_URL,
     withCredentials: true,
 });
 
-userApi.defaults.headers.common['Content-Type'] = 'application/json';
+mainApi.defaults.headers.common['Content-Type'] = 'application/json';
 
 export const getUserInfo = createAsyncThunk(
     'user/getInfo',
     async ({}, {rejectWithValue}) => {
         try {
-            const {data} = await userApi(`/users/me`);
+            const {data} = await mainApi(`/users/me`);
 
             return data
         } catch (error) {
@@ -31,7 +30,7 @@ export const patchUserInfo = createAsyncThunk(
     'user/patchInfo',
     async ({name, email}, {rejectWithValue}) => {
         try {
-            const {data} = await userApi.patch(
+            const {data} = await mainApi.patch(
                 `/users/me`,
                 {name, email},
             );

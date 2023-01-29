@@ -5,7 +5,7 @@ import {Route, Routes, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {checkUserToken} from '../../api/authApi';
-import {getUserInfo} from '../../api/userApi';
+import {getUserInfo} from '../../api/mainApi';
 
 function App() {
     const {isAuth} = useSelector((state) => state.auth);
