@@ -24,31 +24,31 @@ function App() {
     }, []);
 
     return (
-        // <>
-        //     <Sidebar/>
-        isAuth
-            ? (
-                <Routes>
-                    {privateRoutes.map((route, index) => (
-                        <Route
-                            key={index}
-                            path={route.path}
-                            element={route.component}
-                        />
-                    ))}
-                </Routes>
-            ) : (
-                <Routes>
-                    {publicRoutes.map((route, index) => (
-                        <Route
-                            key={index}
-                            path={route.path}
-                            element={route.component}
-                        />
-                    ))}
-                </Routes>
-            )
-        // </>
+        <>
+            <Sidebar/>
+            {isAuth
+                ? (
+                    <Routes>
+                        {privateRoutes.map((route, index) => (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={route.component}
+                            />
+                        ))}
+                    </Routes>
+                ) : (
+                    <Routes>
+                        {publicRoutes.map((route, index) => (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={route.component}
+                            />
+                        ))}
+                    </Routes>
+                )}
+        </>
     );
 }
 

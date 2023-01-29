@@ -1,22 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './Sidebar.module.scss';
 import {Link, NavLink} from 'react-router-dom';
 import profileIcon from '../../images/profile_icon.svg';
+import {useDispatch, useSelector} from 'react-redux';
+import {closeModal} from '../../store/modalSlice';
 
 const Sidebar = () => {
-    const [isOpenSidebar, setIsOpenSidebar] = useState(false);
+    const {isAuth} = useSelector((state) => state.auth);
+    const {isOpen} = useSelector(state => state.modal);
+    const dispatch = useDispatch();
 
     return (
-        <aside className={`${styles.sidebar} ${isOpenSidebar ? `${styles['open']}` : ''}`}>
-            <div className={`${isOpenSidebar ? `${styles['open']}` : ''}`}>
+        <aside className={`${styles.sidebar} ${isOpen ? `${styles['open']}` : ''}`}>
+            <div className={`${isOpen ? `${styles['open']}` : ''}`}>
                 <button
-                    onClick={() => setIsOpenSidebar(!isOpenSidebar)}
+                    onClick={() => dispatch(closeModal())}
                     type='button'></button>
                 <nav>
                     <ul>
-                        <li>
-                            <NavLink to='/'>Главная</NavLink>
-                        </li>
+                        {!isAuth && (
+                            <li>
+                                <NavLink to='/'>Главная</NavLink>
+                            </li>
+                        )}
                         <li>
                             <NavLink to='/movies'>Фильмы</NavLink>
                         </li>

@@ -2,11 +2,13 @@ import React, {useEffect} from 'react';
 import styles from './Header.module.scss';
 import logo from '../../images/logo.svg';
 import profileIcon from '../../images/profile_icon.svg';
-import {Link, NavLink, useNavigate} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import {Link, NavLink} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {openModal} from '../../store/modalSlice';
 
 const Header = () => {
     const {isAuth} = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
 
     useEffect(() => {
 
@@ -46,7 +48,11 @@ const Header = () => {
                                 <img src={profileIcon} alt="profile"/>
                             </Link>
                         </nav>
-                        <button type='button' aria-label='burger' className={styles.burger}></button>
+                        <button
+                            onClick={() => dispatch(openModal())}
+                            type='button'
+                            aria-label='burger'
+                            className={styles.burger}></button>
                     </>
                 )}
             </div>
