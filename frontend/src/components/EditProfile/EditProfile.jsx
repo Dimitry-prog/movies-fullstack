@@ -11,17 +11,11 @@ const EditProfile = () => {
     const nameRef = useRef(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(patchUserInfo(values));
     }
-
-    useEffect(() => {
-        if (success) {
-            navigate('/profile');
-        }
-    }, [success]);
 
     useEffect(() => {
         nameRef.current.focus();
