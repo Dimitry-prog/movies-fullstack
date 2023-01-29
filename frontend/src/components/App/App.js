@@ -5,6 +5,7 @@ import {Route, Routes, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {checkUserToken} from '../../api/authApi';
+import {getUserInfo} from '../../api/userApi';
 
 function App() {
     const {isAuth} = useSelector((state) => state.auth);
@@ -13,13 +14,13 @@ function App() {
 
     useEffect(() => {
         if (isAuth) {
-            // dispatch(getUserInfo({}))
-            navigate('/movies')
+            dispatch(getUserInfo({}));
+            navigate('/movies');
         }
-    }, [isAuth])
+    }, [isAuth]);
 
     useEffect(() => {
-        dispatch(checkUserToken({}))
+        dispatch(checkUserToken({}));
     }, []);
 
     return (
