@@ -8,6 +8,11 @@ const Profile = () => {
     const {user} = useSelector(state => state.user);
     const dispatch = useDispatch();
 
+    const handleLogout = () => {
+        dispatch(logoutUser({}));
+        localStorage.removeItem('searchedMovies');
+    }
+
     return (
         <section className={styles.profile}>
             <h2>Привет, {user.name}!</h2>
@@ -21,7 +26,7 @@ const Profile = () => {
             </div>
             <Link to='/edit-profile' className={styles.profile__edit}>Редактировать</Link>
             <Link
-                onClick={() => dispatch(logoutUser({}))}
+                onClick={handleLogout}
                 to='/signin'
                 className={styles.profile__signout}
             >

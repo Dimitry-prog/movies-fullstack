@@ -1,16 +1,19 @@
 import React, {useState} from 'react';
 import styles from './MoviesCard.module.scss';
-import movieImg from '../../images/movieImg.png';
+import {IMG_BASE_URL} from '../../utils/constants';
 
-const MoviesCard = () => {
+const MoviesCard = ({movie}) => {
     const [like, setLike] = useState(false);
     const [savedFilm, setSavedFilm] = useState(false);
+    // console.log(movie);
+    const {nameRU, duration, image} = movie;
+    const imageUrl = `${IMG_BASE_URL}${image.url}`;
 
     return (
         <div className={styles.card}>
             <div className={styles.card__left}>
-                <h3>Когда я думаю о Германии ночью</h3>
-                <p>1ч 42м</p>
+                <h3>{nameRU}</h3>
+                <p>{duration}</p>
                 <button
                     onClick={() => setLike(!like)}
                     type='button'
@@ -18,7 +21,7 @@ const MoviesCard = () => {
                     className={`${like ? `${styles['active']}` : ''} ${savedFilm ? `${styles['saved']}` : ``}`}
                 ></button>
             </div>
-            <img src={movieImg} alt="Когда я думаю о Германии ночью"/>
+            <img src={imageUrl} alt={nameRU}/>
         </div>
     );
 };

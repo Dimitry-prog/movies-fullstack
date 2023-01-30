@@ -4,8 +4,11 @@ import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import {useSelector} from 'react-redux';
 
 const FavouritesPage = () => {
+    const {searchedMovies, loading, isResponse, error, initAmountQueryMovies} = useSelector(state => state.movies);
+
     return (
         <div className={styles.favourites}>
             <Header/>
@@ -14,7 +17,7 @@ const FavouritesPage = () => {
                     <SearchForm/>
                 </section>
                 <section className={styles.favourites__movies}>
-                    <MoviesCardList/>
+                    <MoviesCardList movies={searchedMovies}/>
                 </section>
             </main>
             <Footer/>
