@@ -45,3 +45,54 @@ export const patchUserInfo = createAsyncThunk(
         }
     }
 );
+
+export const getFavouritesMovies = createAsyncThunk(
+    'user/favouritesMovies',
+    async ({}, {rejectWithValue}) => {
+        try {
+            const {data} = await mainApi('/movies');
+
+            return data
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+);
+
+export const createMovie = createAsyncThunk(
+    'user/createMovie',
+    async (movie, {rejectWithValue}) => {
+        try {
+            const {data} = await mainApi.post('/movies', movie);
+
+            return data
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+);
+
+export const deleteMovie = createAsyncThunk(
+    'user/deleteMovie',
+    async (id, {rejectWithValue}) => {
+        try {
+            const {data} = await mainApi.delete(`/movies/${id}`);
+
+            return data
+        } catch (error) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+);

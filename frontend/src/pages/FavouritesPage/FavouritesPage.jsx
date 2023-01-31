@@ -7,7 +7,7 @@ import Footer from '../../components/Footer/Footer';
 import {useSelector} from 'react-redux';
 
 const FavouritesPage = () => {
-    const {searchedMovies, loading, isResponse, error, initAmountQueryMovies} = useSelector(state => state.movies);
+    const {favouritesMovie} = useSelector(state => state.favouriteMovies);
 
     return (
         <div className={styles.favourites}>
@@ -17,7 +17,7 @@ const FavouritesPage = () => {
                     <SearchForm/>
                 </section>
                 <section className={styles.favourites__movies}>
-                    <MoviesCardList movies={searchedMovies}/>
+                    <MoviesCardList movies={favouritesMovie}/>
                 </section>
             </main>
             <Footer/>

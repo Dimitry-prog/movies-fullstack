@@ -4,6 +4,7 @@ import {setupListeners} from '@reduxjs/toolkit/query';
 import userSlice from './userSlice';
 import modalSlice from './modalSlice';
 import moviesSlice from './moviesSlice';
+import favouriteMoviesSlice from './favouriteMoviesSlice';
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         user: userSlice,
         modal: modalSlice,
         movies: moviesSlice,
+        favouriteMovies: favouriteMoviesSlice,
     },
 });
 
