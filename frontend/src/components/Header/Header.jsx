@@ -10,30 +10,31 @@ const Header = () => {
     const {isAuth} = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-
-    }, [isAuth])
-
     return (
         <header className={`${styles.header} ${!isAuth ? `${styles.header_hero}` : ''}`}>
             <div className={styles.header__container}>
-                <Link to='/' className={styles.logo}><img src={logo} alt="logo"/></Link>
 
                 {!isAuth && (
-                    <nav className={styles.header__nav_hero}>
-                        <ul className={styles.header__list_hero}>
-                            <li className={styles.header__item_hero}>
-                                <Link to='/signup'>Регистрация</Link>
-                            </li>
-                            <li className={`${styles.header__item_hero} ${styles.header__item_hero_signin}`}>
-                                <Link to='/signin'>Войти</Link>
-                            </li>
-                        </ul>
-                    </nav>
+                    <>
+                        <Link to='/' className={styles.logo}><img src={logo} alt="logo"/></Link>
+
+                        <nav className={styles.header__nav_hero}>
+                            <ul className={styles.header__list_hero}>
+                                <li className={styles.header__item_hero}>
+                                    <Link to='/signup'>Регистрация</Link>
+                                </li>
+                                <li className={`${styles.header__item_hero} ${styles.header__item_hero_signin}`}>
+                                    <Link to='/signin'>Войти</Link>
+                                </li>
+                            </ul>
+                        </nav>
+                    </>
                 )}
 
                 {isAuth && (
                     <>
+                        <Link to='/movies' className={styles.logo}><img src={logo} alt="logo"/></Link>
+
                         <nav className={styles.header__nav}>
                             <ul className={styles.header__list}>
                                 <li className={styles.header__item}>
