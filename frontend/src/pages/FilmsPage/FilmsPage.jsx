@@ -13,6 +13,7 @@ const FilmsPage = () => {
         loading,
         isResponse,
         error,
+        movies
     } = useSelector(state => state.movies);
     const isRenderMovies = !loading && searchedMovies.length !== 0 && error === null;
     const [query, setQuery] = useState(1);
@@ -36,7 +37,7 @@ const FilmsPage = () => {
                     <p className={styles.films__error}>Во время запроса произошла ошибка. Возможно, проблема с
                         соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>
                 )}
-
+                {/*<MoviesCardList movies={movies}/>*/}
                 {isRenderMovies && (
                     <section className={styles.films__movies}>
                         <MoviesCardList movies={queriedArray}/>
