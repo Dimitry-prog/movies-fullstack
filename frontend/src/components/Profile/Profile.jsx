@@ -11,6 +11,7 @@ const Profile = () => {
     const handleLogout = () => {
         dispatch(logoutUser({}));
         localStorage.removeItem('searchedMovies');
+        localStorage.removeItem('queryParams');
     }
 
     return (

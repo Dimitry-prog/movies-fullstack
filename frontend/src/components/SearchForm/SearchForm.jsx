@@ -15,18 +15,19 @@ const SearchForm = ({setQuery}) => {
     const dispatch = useDispatch();
     const searchInput = initInputs.slice(3);
     const inputRef = useRef(null);
-    const [checked, setChecked] = useState(false);
-    console.log(errors)
-
-    console.log(movies)
-    console.log(values)
-    const handleToggleCheckbox = () => {
-        setChecked(!checked);
-    }
-    console.log(checked)
+    const [isChecked, setIsChecked] = useState(false);
+    // console.log(errors)
+    //
+    // console.log(movies)
+    // console.log(values)
+    // console.log('Object.keys(values).length', Object.keys(values).length)
+    // const handleToggleCheckbox = () => {
+    //     setIsChecked(!isChecked);
+    // }
+    // console.log(isChecked)
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!Object.keys(values).length || !isValid) {
+        if (values.search === '') {
             setErrors({
                 search: 'Строка не может быть пустой'
             });
@@ -37,22 +38,48 @@ const SearchForm = ({setQuery}) => {
         }
     };
 
-    useEffect(() => {
-        if (isResponse) {
+    // const params = JSON.parse(localStorage.getItem('queryParams'));
+    // console.log('params', params);
 
-            const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(values.search));
+    // console.log(values.search)
+    useEffect(() => {
+        const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(values.search));
+
+        setQuery(1);
+
+        if (isResponse && !isChecked) {
             localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
             dispatch(getSearchedMovies(filteredMovies));
-            setQuery(1);
-
-            const obj = {
+            const queryParams = {
                 filteredMovies,
-                checked,
+                isChecked,
                 query: values.search
             }
-            localStorage.setItem('test', JSON.stringify(obj));
+            localStorage.setItem('queryParams', JSON.stringify(queryParams));
         }
-    }, [movies]);
+        if (isResponse && isChecked) {
+            const shortMovies = filteredMovies.filter(movie => movie.duration <= 30);
+            localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
+            dispatch(getSearchedMovies(shortMovies));
+            const queryParams = {
+                filteredMovies,
+                isChecked,
+                query: values.search
+            }
+            localStorage.setItem('queryParams', JSON.stringify(queryParams));
+        }
+    }, [movies, isChecked]);
+
+    useEffect(() => {
+        // const params = JSON.parse(localStorage.getItem('queryParams'));
+        // console.log('params', params);
+        const params = JSON.parse(localStorage.getItem('queryParams'));
+        setValues({
+            search: params?.query || '',
+        })
+        setIsChecked(params.isChecked);
+    }, []);
+
 
     return (
         <form
@@ -72,23 +99,38 @@ const SearchForm = ({setQuery}) => {
                     {/*    minLength={1}*/}
                     {/*    required*/}
                     {/*/>*/}
-                    {searchInput.map(input => (
-                        <MyInput
-                            likeRef={inputRef}
-                            key={input.id}
-                            onChange={handleChange}
-                            dirtied={dirties[input.name]?.toString()}
-                            {...input}
-                            myClass={styles.search}
-                        />
-                    ))}
+                    {/*{searchInput.map(input => (*/}
+                    {/*    <MyInput*/}
+                    {/*        likeRef={inputRef}*/}
+                    {/*        // defaultValue={params?.query || values.search || ''}*/}
+                    {/*        key={input.id}*/}
+                    {/*        onChange={handleChange}*/}
+                    {/*        dirtied={dirties[input.name]?.toString()}*/}
+                    {/*        {...input}*/}
+                    {/*        myClass={styles.search}*/}
+                    {/*    />*/}
+                    {/*))}*/}
+                    <MyInput
+                        likeRef={inputRef}
+                        value={values.search || ''}
+                        onChange={handleChange}
+                        name='search'
+                        type='text'
+                        placeholder='Фильм'
+                        pattern="[a-zA-Zа-яА-Я0-9\s]{1,}"
+                        required
+                        dirtied={dirties.search?.toString()}
+                        myClass={styles.search}
+                        errorMsg='Строка не может быть пустой и содержать символы'
+                    />
                     <button type='submit' aria-label='submit'>Найти</button>
                 </div>
-                {!isValid && <span>{errors.search}</span>}
+                {/*{!isValid && <span>{errors.search}</span>}*/}
             </div>
             <div className={styles.form__checkbox}>
                 <FilterCheckbox
-                    onChange={handleToggleCheckbox}
+                    isChecked={isChecked}
+                    onChange={setIsChecked}
                 />
                 <p>Короткометражки</p>
             </div>

@@ -15,7 +15,7 @@ const MoviesCard = ({movie}) => {
     const isFavouriteMovie = favouritesMovie.some(movie => Number(movie.movieId) === id);
     const imageUrl = `${IMG_BASE_URL}${image.url}`;
     const favouriteMovieId = movie._id;
-    
+
     let thumbnailUrl;
     if (!pathToFavouriteMovies) {
         thumbnailUrl = `${IMG_BASE_URL}${image.formats.thumbnail.url}`;
@@ -48,9 +48,9 @@ const MoviesCard = ({movie}) => {
         }
     };
 
-    useEffect(() => {
-        dispatch(getFavouritesMovies({}));
-    }, []);
+    // useEffect(() => {
+    //     dispatch(getFavouritesMovies({}));
+    // }, []);
 
     return (
         <div className={styles.card}>

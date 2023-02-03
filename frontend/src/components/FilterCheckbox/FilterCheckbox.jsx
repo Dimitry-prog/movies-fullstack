@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './FilterCheckbox.module.scss';
 
-const FilterCheckbox = ({onChange}) => {
+const FilterCheckbox = ({onChange, isChecked}) => {
 
     return (
         <label className={styles.filterCheckbox}>
             <input
-                onChange={onChange}
+                onChange={(e) => onChange(e.target.checked)}
+                checked={isChecked}
                 className={styles.filterCheckbox__checkbox}
                 type="checkbox"
             />
