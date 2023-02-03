@@ -1,16 +1,23 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {createMovie, deleteMovie, getFavouritesMovies} from '../api/mainApi';
 
+const searchedFavouritesMovies = localStorage.getItem('searchedFavouritesMovies') ? JSON.parse(localStorage.getItem('searchedFavouritesMovies')) : [];
+
 const initialState = {
     favouritesMovie: [],
     loading: false,
     error: null,
+    searchedFavouritesMovies,
 }
 
 const favouriteMoviesSlice = createSlice({
     name: 'favouriteMovies',
     initialState,
-    reducers: {},
+    reducers: {
+        getSearchedFavouritesMovies: (state, action) => {
+            state.searchedFavouritesMovies = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getFavouritesMovies.pending, (state) => {
@@ -19,7 +26,7 @@ const favouriteMoviesSlice = createSlice({
             })
             .addCase(getFavouritesMovies.fulfilled, (state, action) => {
                 state.loading = false;
-                state.favouritesMovie = action.payload;
+                state.searchedFavouritesMovies = action.payload;
             })
             .addCase(getFavouritesMovies.rejected, (state, action) => {
                 state.loading = false;
@@ -52,5 +59,7 @@ const favouriteMoviesSlice = createSlice({
             })
     }
 });
+
+export const {getSearchedFavouritesMovies} = favouriteMoviesSlice.actions;
 
 export default favouriteMoviesSlice.reducer;

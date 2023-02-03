@@ -9,8 +9,8 @@ import {initInputs} from '../../data/initInputs';
 import MyInput from '../UI/MyInput/MyInput';
 
 const Login = () => {
-    const {values, errors, isValid, handleChange, dirties, resetForm, setErrors} = useFormValidation();
-    const {error: authError} = useSelector(state => state.auth);
+    const {values, isValid, handleChange, dirties, resetForm} = useFormValidation();
+    const {error: authError, loading} = useSelector(state => state.auth);
     const dispatch = useDispatch()
     const loginInputs = initInputs.slice(1, 3);
 
@@ -38,7 +38,9 @@ const Login = () => {
                     ))}
                     <div>
                         {(!isValid && authError) && <span>Вы ввели неправильный логин или пароль.</span>}
-                        <button type='submit' disabled={!isValid} aria-label='submit form'>Войти</button>
+                        <button type='submit' disabled={!isValid} aria-label='submit form'>
+                            {loading ? 'Выполняем вход' : 'Войти'}
+                        </button>
                     </div>
                 </form>
                 <div className={styles.login__signup}>

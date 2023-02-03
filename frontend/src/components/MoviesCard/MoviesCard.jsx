@@ -4,6 +4,7 @@ import {IMG_BASE_URL} from '../../utils/constants';
 import {useDispatch, useSelector} from 'react-redux';
 import {useLocation} from 'react-router-dom';
 import {createMovie, deleteMovie} from '../../api/mainApi';
+import {convertDuration} from '../../utils/convertDuration';
 
 const MoviesCard = ({movie}) => {
     const {nameRU, duration, image, country, director, year, description, trailerLink, nameEN, id} = movie;
@@ -51,7 +52,7 @@ const MoviesCard = ({movie}) => {
         <div className={styles.card}>
             <div className={styles.card__left}>
                 <h3>{nameRU}</h3>
-                <p>{duration}</p>
+                <p>{convertDuration(duration)}</p>
 
                 {pathToFavouriteMovies
                     ? (

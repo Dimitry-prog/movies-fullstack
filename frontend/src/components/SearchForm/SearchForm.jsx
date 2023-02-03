@@ -7,15 +7,21 @@ import {getMovies} from '../../api/moviesApi';
 import useFormValidation from '../../hooks/useFormvalidation';
 import {getSearchedMovies} from '../../store/moviesSlice';
 import MyInput from '../UI/MyInput/MyInput';
+import {getFavouritesMovies} from '../../api/mainApi';
+import {getSearchedFavouritesMovies} from '../../store/favouriteMoviesSlice';
+import {useLocation} from 'react-router-dom';
 
 const SearchForm = () => {
     const {values, handleChange, dirties, setValues, setErrors} = useFormValidation();
     const {movies, loading, isResponse} = useSelector(state => state.movies);
+    const {favouritesMovie} = useSelector(state => state.favouriteMovies);
     const dispatch = useDispatch();
     const inputRef = useRef(null);
     const [isChecked, setIsChecked] = useState(false);
+    const location = useLocation();
+    const pathToFavouriteMovies = location.pathname === '/saved-movies';
 
-    const handleSubmit = (e) => {
+    const handleSubmitMovies = (e) => {
         e.preventDefault();
         if (values.search === '') {
             setErrors({
@@ -26,6 +32,44 @@ const SearchForm = () => {
             dispatch(getMovies({}));
         }
     };
+
+    const handleSubmitFavourites = (e) => {
+        e.preventDefault();
+        if (values.search === '') {
+            setErrors({
+                search: 'Строка не может быть пустой'
+            });
+            inputRef.current.setAttribute('dirtied', true);
+        } else {
+            dispatch(getFavouritesMovies({}));
+        }
+    };
+
+    useEffect(() => {
+        const filteredMovies = favouritesMovie.filter(movie => movie.nameRU.toLowerCase().includes(values.search));
+
+        if (isResponse && !isChecked) {
+            localStorage.setItem('searchedFavouritesMovies', JSON.stringify(filteredMovies));
+            dispatch(getSearchedFavouritesMovies(filteredMovies));
+            const queryParams = {
+                filteredMovies,
+                isChecked,
+                query: values.search
+            }
+            localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
+        }
+        if (isResponse && isChecked) {
+            const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+            localStorage.setItem('searchedFavouritesMovies', JSON.stringify(shortMovies));
+            dispatch(getSearchedFavouritesMovies(shortMovies));
+            const queryParams = {
+                filteredMovies,
+                isChecked,
+                query: values.search
+            }
+            localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
+        }
+    }, [favouritesMovie]);
 
     useEffect(() => {
         const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(values.search));
@@ -41,7 +85,7 @@ const SearchForm = () => {
             localStorage.setItem('queryParams', JSON.stringify(queryParams));
         }
         if (isResponse && isChecked) {
-            const shortMovies = filteredMovies.filter(movie => movie.duration <= 30);
+            const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
             localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
             dispatch(getSearchedMovies(shortMovies));
             const queryParams = {
@@ -51,20 +95,24 @@ const SearchForm = () => {
             }
             localStorage.setItem('queryParams', JSON.stringify(queryParams));
         }
-    }, [movies, isChecked]);
+    }, [movies]);
 
     useEffect(() => {
         const params = JSON.parse(localStorage.getItem('queryParams'));
         setValues({
             search: params?.query || '',
         })
-        setIsChecked(params?.isChecked);
+        if (params) {
+            setIsChecked(params.isChecked);
+        } else {
+            setIsChecked(false);
+        }
 
     }, []);
 
     return (
         <form
-            onSubmit={handleSubmit}
+            onSubmit={pathToFavouriteMovies ? handleSubmitFavourites : handleSubmitMovies}
             className={styles.form}
             noValidate
         >

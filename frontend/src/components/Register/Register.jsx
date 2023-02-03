@@ -10,7 +10,7 @@ import {initInputs} from '../../data/initInputs';
 
 
 const Register = () => {
-    const {values, errors, isValid, handleChange, dirties, resetForm} = useFormValidation();
+    const {values, isValid, handleChange, dirties, resetForm} = useFormValidation();
     const {loading, error: authError, success} = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -47,7 +47,7 @@ const Register = () => {
                     <div>
                         {authError && <span>{authError}</span>}
                         <button type='submit' disabled={!isValid} aria-label='submit form'>
-                            Зарегистрироваться
+                            {loading ? 'Регистрация' : 'Зарегистрироваться'}
                         </button>
                     </div>
                 </form>
