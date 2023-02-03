@@ -20,6 +20,10 @@
     @include custom-font-size(24px, 29px);
     margin: 0 0 125px;
     font-weight: $font-weight-500;
+
+    @media screen and (max-width: 450px) {
+      text-align: center;
+    }
   }
 
   form {
@@ -82,9 +86,35 @@
         opacity: $opacity-m;
       }
 
+      &:disabled {
+        cursor: inherit;
+        opacity: $opacity-m;
+      }
+
       @media screen and (max-width: 450px) {
         @include custom-font-size(12px, 15px);
         margin-top: auto;
+      }
+    }
+  }
+
+  .edit {
+
+    input {
+
+      &:valid {
+        border-color: transparent;
+        border-bottom: 1px solid $accent-color-green-dark;
+      }
+
+      &:invalid {
+        border-bottom: 1px solid $accent-color-red;
+      }
+
+      &:invalid[dirtied="true"] {
+        color: $accent-color-red;
+        border-color: transparent;
+        border-bottom: 1px solid $accent-color-red;
       }
     }
   }
