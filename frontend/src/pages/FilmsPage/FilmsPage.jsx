@@ -8,7 +8,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import Loader from '../../components/Loader/Loader';
 import {getFavouritesMovies} from '../../api/mainApi';
 
-
 const FilmsPage = () => {
     const {
         searchedMovies,
@@ -16,18 +15,14 @@ const FilmsPage = () => {
         isResponse,
         error,
     } = useSelector(state => state.movies);
-    const isRenderMovies = !loading && searchedMovies.length !== 0 && error === null;
-
-    // let qtyMovies;
 
     const [qtyMovies, setQtyMovies] = useState(7);
-
     const [resize, setResize] = useState(null);
     const [query, setQuery] = useState(qtyMovies);
     const queriedArray = searchedMovies.slice(0, query);
     const dispatch = useDispatch();
-    console.log('query', query)
-    // console.log(qtyMovies)
+    const isRenderMovies = !loading && searchedMovies.length !== 0 && error === null;
+
     const handleQuery = () => {
         setQuery(prev => prev + qtyMovies);
     }
@@ -35,18 +30,18 @@ const FilmsPage = () => {
     useEffect(() => {
         const handleResize = () => setResize(window.innerWidth);
         window.addEventListener('resize', handleResize);
-        handleResize();
+
+        const timeOut = setTimeout(() => {
+            handleResize();
+        }, 1000);
 
         return () => {
             window.removeEventListener('resize', handleResize);
+            clearTimeout(timeOut);
         }
     }, []);
 
     useEffect(() => {
-
-
-        console.log('qtyMovies', qtyMovies);
-        console.log('resize', resize)
         if (resize > 770) {
             setQtyMovies(7);
             setQuery(7);
@@ -59,31 +54,18 @@ const FilmsPage = () => {
             setQtyMovies(3);
             setQuery(3);
         }
-    }, [resize, setQuery]);
+    }, [resize]);
 
-    // useEffect(() => {
-    //     if (resize > 770) {
-    //         // qtyMovies = 7;
-    //         setQtyMovies(7);
-    //     }
-    //     if (resize < 770) {
-    //         // qtyMovies = 5;
-    //         setQtyMovies(5);
-    //     }
-    //     if (resize < 550) {
-    //         // qtyMovies = 3;
-    //         setQtyMovies(3);
-    //     }
-    // }, [resize, qtyMovies]);
     useEffect(() => {
         dispatch(getFavouritesMovies({}));
     }, []);
+
     return (
         <div className={styles.films}>
             <Header/>
             <main>
                 <section className={styles.films__form}>
-                    <SearchForm setQuery={setQuery}/>
+                    <SearchForm/>
                 </section>
 
                 {loading && <Loader/>}
@@ -96,13 +78,12 @@ const FilmsPage = () => {
                     <p className={styles.films__error}>Во время запроса произошла ошибка. Возможно, проблема с
                         соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>
                 )}
-                {/*<MoviesCardList movies={movies}/>*/}
+
                 {isRenderMovies && (
                     <section className={styles.films__movies}>
                         <MoviesCardList movies={queriedArray}/>
                         {queriedArray.length !== searchedMovies.length && (
                             <button
-                                // onClick={() => setQuery(prev => prev + 7)}
                                 onClick={handleQuery}
                                 type='button'
                                 aria-label='load more films'

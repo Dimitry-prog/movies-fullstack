@@ -28,6 +28,16 @@
     border-radius: 50%;
     animation: bubble 2s infinite ease-in-out;
   }
+
+  &__small {
+    width: 10px;
+    height: 10px;
+
+    span {
+      width: 10px;
+      height: 10px;
+    }
+  }
 }
 
 @keyframes spinner {

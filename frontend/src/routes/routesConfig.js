@@ -6,7 +6,6 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import EditProfile from '../components/EditProfile/EditProfile';
 import Register from '../components/Register/Register';
 import Login from '../components/Login/Login';
-import Test from '../components/UI/MyInput/Test';
 
 export const publicRoutes = [
     {
@@ -43,10 +42,6 @@ export const privateRoutes = [
     {
         path: '/edit-profile',
         component: <EditProfile/>,
-    },
-    {
-        path: '/test',
-        component: <Test/>,
     },
     {
         path: '*',

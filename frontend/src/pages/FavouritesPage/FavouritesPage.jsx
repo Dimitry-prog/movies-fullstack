@@ -1,19 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styles from './FavouritesPage.module.scss';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import {useDispatch, useSelector} from 'react-redux';
-import {getFavouritesMovies} from '../../api/mainApi';
+import {useSelector} from 'react-redux';
+
 
 const FavouritesPage = () => {
     const {favouritesMovie} = useSelector(state => state.favouriteMovies);
-    const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(getFavouritesMovies({}));
-    // }, []);
 
     return (
         <div className={styles.favourites}>

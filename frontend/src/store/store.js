@@ -1,6 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
 import authSlice from './authSlice';
-import {setupListeners} from '@reduxjs/toolkit/query';
 import userSlice from './userSlice';
 import modalSlice from './modalSlice';
 import moviesSlice from './moviesSlice';

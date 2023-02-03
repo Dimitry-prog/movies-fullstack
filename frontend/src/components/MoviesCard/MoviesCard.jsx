@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styles from './MoviesCard.module.scss';
 import {IMG_BASE_URL} from '../../utils/constants';
 import {useDispatch, useSelector} from 'react-redux';
 import {useLocation} from 'react-router-dom';
-import {createMovie, deleteMovie, getFavouritesMovies} from '../../api/mainApi';
+import {createMovie, deleteMovie} from '../../api/mainApi';
 
 const MoviesCard = ({movie}) => {
-    // console.log(movie)
     const {nameRU, duration, image, country, director, year, description, trailerLink, nameEN, id} = movie;
     const {favouritesMovie} = useSelector(state => state.favouriteMovies);
     const location = useLocation();
@@ -47,10 +46,6 @@ const MoviesCard = ({movie}) => {
             dispatch(createMovie(createMovieFields));
         }
     };
-
-    // useEffect(() => {
-    //     dispatch(getFavouritesMovies({}));
-    // }, []);
 
     return (
         <div className={styles.card}>

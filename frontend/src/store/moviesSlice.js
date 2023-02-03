@@ -9,7 +9,6 @@ const initialState = {
     error: null,
     isResponse: false,
     searchedMovies,
-    searchedQuery: null,
 }
 
 const moviesSlice = createSlice({
@@ -18,9 +17,6 @@ const moviesSlice = createSlice({
     reducers: {
         getSearchedMovies: (state, action) => {
             state.searchedMovies = action.payload;
-        },
-        setSearchedQuery: (state, action) => {
-            state.searchedQuery = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -42,6 +38,6 @@ const moviesSlice = createSlice({
     }
 });
 
-export const {getSearchedMovies, setSearchedQuery} = moviesSlice.actions;
+export const {getSearchedMovies} = moviesSlice.actions;
 
 export default moviesSlice.reducer;

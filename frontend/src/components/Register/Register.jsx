@@ -37,46 +37,6 @@ const Register = () => {
             </header>
             <main>
                 <form onSubmit={handleSubmit} noValidate>
-                    {/*<div>*/}
-                    {/*    <p>Имя</p>*/}
-                    {/*    <input*/}
-                    {/*        value={values.name || ''}*/}
-                    {/*        onChange={handleChange}*/}
-                    {/*        name="name"*/}
-                    {/*        type="text"*/}
-                    {/*        placeholder='Введите ваше имя'*/}
-                    {/*        minLength={2}*/}
-                    {/*        maxLength={30}*/}
-                    {/*        required*/}
-                    {/*    />*/}
-                    {/*    <span>{errors.name}</span>*/}
-                    {/*</div>*/}
-                    {/*<div>*/}
-                    {/*    <p>E-mail</p>*/}
-                    {/*    <input*/}
-                    {/*        value={values.email || ''}*/}
-                    {/*        onChange={handleChange}*/}
-                    {/*        name="email"*/}
-                    {/*        type="email"*/}
-                    {/*        placeholder='Введите вашу почту'*/}
-                    {/*        required*/}
-                    {/*    />*/}
-                    {/*    <span>{errors.email}</span>*/}
-                    {/*</div>*/}
-                    {/*<div>*/}
-                    {/*    <p>Пароль</p>*/}
-                    {/*    <input*/}
-                    {/*        value={values.password || ''}*/}
-                    {/*        onChange={handleChange}*/}
-                    {/*        name="password"*/}
-                    {/*        type="password"*/}
-                    {/*        placeholder='Введите пароль'*/}
-                    {/*        minLength={3}*/}
-                    {/*        required*/}
-                    {/*    />*/}
-                    {/*    <span>{errors.password}</span>*/}
-                    {/*</div>*/}
-
                     {initInputs.map(input => (
                         <MyInput key={input.id}
                                  onChange={handleChange}
