@@ -8,12 +8,12 @@ import {registerUser} from '../../api/authApi';
 import MyInput from '../UI/MyInput/MyInput';
 import {initInputs} from '../../data/initInputs';
 
-
 const Register = () => {
     const {values, isValid, handleChange, dirties, resetForm} = useFormValidation();
     const {loading, error: authError, success} = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const registerInput = initInputs.slice(0, 3);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,7 +37,7 @@ const Register = () => {
             </header>
             <main>
                 <form onSubmit={handleSubmit} noValidate>
-                    {initInputs.map(input => (
+                    {registerInput.map(input => (
                         <MyInput key={input.id}
                                  onChange={handleChange}
                                  dirtied={dirties[input.name]?.toString()}

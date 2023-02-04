@@ -8,7 +8,7 @@ export const moviesApi = axios.create({
 
 export const getMovies = createAsyncThunk(
     'movies/getMovies',
-    async ({}, {rejectWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             const {data} = await moviesApi();
 

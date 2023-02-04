@@ -9,7 +9,7 @@ const Profile = () => {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-        dispatch(logoutUser({}));
+        dispatch(logoutUser());
         localStorage.removeItem('searchedMovies');
         localStorage.removeItem('queryParams');
     }

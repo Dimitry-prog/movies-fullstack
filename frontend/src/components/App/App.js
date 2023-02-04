@@ -14,13 +14,13 @@ function App() {
 
     useEffect(() => {
         if (isAuth) {
-            dispatch(getUserInfo({}));
+            dispatch(getUserInfo());
             navigate('/movies');
         }
     }, [isAuth]);
 
     useEffect(() => {
-        dispatch(checkUserToken({}));
+        dispatch(checkUserToken());
     }, []);
 
     return (

@@ -11,7 +11,7 @@ mainApi.defaults.headers.common['Content-Type'] = 'application/json';
 
 export const getUserInfo = createAsyncThunk(
     'user/getInfo',
-    async ({}, {rejectWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             const {data} = await mainApi(`/users/me`);
 
@@ -48,7 +48,7 @@ export const patchUserInfo = createAsyncThunk(
 
 export const getFavouritesMovies = createAsyncThunk(
     'user/favouritesMovies',
-    async ({}, {rejectWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             const {data} = await mainApi('/movies');
 

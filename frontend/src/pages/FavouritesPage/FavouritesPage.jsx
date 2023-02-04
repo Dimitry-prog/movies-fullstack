@@ -6,8 +6,6 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import {useDispatch, useSelector} from 'react-redux';
 import {getFavouritesMovies} from '../../api/mainApi';
-import {setSearchedFavouritesMovies} from '../../store/favouriteMoviesSlice';
-
 
 const FavouritesPage = () => {
     const {
@@ -21,8 +19,7 @@ const FavouritesPage = () => {
     const isRenderMovies = !loading && searchedFavouritesMovies.length !== 0 && error === null;
 
     useEffect(() => {
-        dispatch(getFavouritesMovies({}));
-        dispatch(setSearchedFavouritesMovies({}));
+        dispatch(getFavouritesMovies());
     }, []);
 
     return (

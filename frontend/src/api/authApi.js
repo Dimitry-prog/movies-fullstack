@@ -51,7 +51,7 @@ export const loginUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
     'auth/logout',
-    async ({}, {rejectWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             const {data} = await authApi(`/signout`);
             return data
@@ -67,7 +67,7 @@ export const logoutUser = createAsyncThunk(
 
 export const checkUserToken = createAsyncThunk(
     'auth/checkToken',
-    async ({}, {rejectWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             await authApi(`users/me`);
         } catch (error) {

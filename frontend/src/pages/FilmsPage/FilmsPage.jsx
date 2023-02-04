@@ -57,7 +57,7 @@ const FilmsPage = () => {
     }, [resize]);
 
     useEffect(() => {
-        dispatch(getFavouritesMovies({}));
+        dispatch(getFavouritesMovies());
     }, []);
 
     return (

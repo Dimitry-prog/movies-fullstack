@@ -9,7 +9,7 @@ import MyInput from '../UI/MyInput/MyInput';
 import {getFavouritesMovies} from '../../api/mainApi';
 import {setSearchedFavouritesMovies} from '../../store/favouriteMoviesSlice';
 import {useLocation} from 'react-router-dom';
-import {setSearchedMovies, test} from '../../store/moviesSlice';
+import {setSearchedMovies} from '../../store/moviesSlice';
 
 const SearchForm = () => {
     const {values, handleChange, dirties, setValues, setErrors} = useFormValidation();
@@ -29,7 +29,7 @@ const SearchForm = () => {
             });
             inputRef.current.setAttribute('dirtied', true);
         } else {
-            dispatch(getMovies({}));
+            dispatch(getMovies());
         }
     };
 
@@ -41,78 +41,88 @@ const SearchForm = () => {
             });
             inputRef.current.setAttribute('dirtied', true);
         } else {
-            dispatch(getFavouritesMovies({}));
+            dispatch(getFavouritesMovies());
         }
     };
 
-    // useEffect(() => {
-    //     const filteredMovies = favouritesMovie?.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
-    //
-    //     if (isResponseFavourites && !isChecked) {
-    //         localStorage.setItem('searchedFavouritesMovies', JSON.stringify(filteredMovies));
-    //         dispatch(setSearchedFavouritesMovies(filteredMovies));
-    //         const queryParams = {
-    //             filteredMovies,
-    //             isChecked,
-    //             query: values.search
-    //         }
-    //         localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
-    //     }
-    //     if (isResponseFavourites && isChecked) {
-    //         const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
-    //         localStorage.setItem('searchedFavouritesMovies', JSON.stringify(shortMovies));
-    //         dispatch(setSearchedFavouritesMovies(shortMovies));
-    //         const queryParams = {
-    //             filteredMovies,
-    //             isChecked,
-    //             query: values.search
-    //         }
-    //         localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
-    //     }
-    // }, [favouritesMovie, isChecked]);
-    //
-    // useEffect(() => {
-    //     const filteredMovies = movies?.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
-    //
-    //     if (isResponse && !isChecked) {
-    //         localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
-    //         dispatch(setSearchedMovies(filteredMovies));
-    //         const queryParams = {
-    //             filteredMovies,
-    //             isChecked,
-    //             query: values.search
-    //         }
-    //         localStorage.setItem('queryParams', JSON.stringify(queryParams));
-    //     }
-    //     if (isResponse && isChecked) {
-    //         const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
-    //         localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
-    //         dispatch(setSearchedMovies(shortMovies));
-    //         const queryParams = {
-    //             filteredMovies,
-    //             isChecked,
-    //             query: values.search
-    //         }
-    //         localStorage.setItem('queryParams', JSON.stringify(queryParams));
-    //     }
-    // }, [movies]);
+    useEffect(() => {
+        const filteredMovies = movies?.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
+
+        if (isResponse && !isChecked) {
+            localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
+            dispatch(setSearchedMovies(filteredMovies));
+            const queryParams = {
+                filteredMovies,
+                isChecked,
+                query: values.search
+            }
+            localStorage.setItem('queryParams', JSON.stringify(queryParams));
+        }
+        if (isResponse && isChecked) {
+            const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+            localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
+            dispatch(setSearchedMovies(shortMovies));
+            const queryParams = {
+                filteredMovies,
+                isChecked,
+                query: values.search
+            }
+            localStorage.setItem('queryParams', JSON.stringify(queryParams));
+        }
+    }, [movies]);
 
     useEffect(() => {
-        let params;
-        if (pathToFavouriteMovies) {
-            params = JSON.parse(localStorage.getItem('queryFavouritesParams'));
-        } else {
-            params = JSON.parse(localStorage.getItem('queryParams'));
-        }
-        setValues({
-            search: params?.query || '',
-        })
-        if (params) {
-            setIsChecked(params.isChecked);
-        } else {
-            setIsChecked(false);
-        }
+        const filteredMovies = favouritesMovie?.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
 
+        if (isResponseFavourites && !isChecked) {
+            localStorage.setItem('searchedFavouritesMovies', JSON.stringify(filteredMovies));
+            dispatch(setSearchedFavouritesMovies(filteredMovies));
+            const queryParams = {
+                filteredMovies,
+                isChecked,
+                query: values.search
+            }
+            localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
+        }
+        if (isResponseFavourites && isChecked) {
+            const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+            localStorage.setItem('searchedFavouritesMovies', JSON.stringify(shortMovies));
+            dispatch(setSearchedFavouritesMovies(shortMovies));
+            const queryParams = {
+                filteredMovies,
+                isChecked,
+                query: values.search
+            }
+            localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
+        }
+    }, [favouritesMovie, isChecked]);
+
+    useEffect(() => {
+        if (!pathToFavouriteMovies) {
+            const params = JSON.parse(localStorage.getItem('queryParams'));
+            setValues({
+                search: params?.query || '',
+            })
+            if (params) {
+                setIsChecked(params.isChecked);
+            } else {
+                setIsChecked(false);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        if (pathToFavouriteMovies) {
+            const params = JSON.parse(localStorage.getItem('queryFavouritesParams'));
+            setValues({
+                search: params?.query || '',
+            })
+            if (params) {
+                setIsChecked(params.isChecked);
+            } else {
+                setIsChecked(false);
+            }
+        }
     }, []);
 
     return (
