@@ -13,7 +13,7 @@ import {setSearchedMovies, test} from '../../store/moviesSlice';
 
 const SearchForm = () => {
     const {values, handleChange, dirties, setValues, setErrors} = useFormValidation();
-    const {movies, loading, isResponse, searchedMovies} = useSelector(state => state.movies);
+    const {movies, loading, isResponse} = useSelector(state => state.movies);
     const {favouritesMovie, isResponse: isResponseFavourites} = useSelector(state => state.favouriteMovies);
     const dispatch = useDispatch();
     const inputRef = useRef(null);
@@ -99,7 +99,6 @@ const SearchForm = () => {
 
     useEffect(() => {
         let params;
-        console.log(pathToFavouriteMovies)
         if (pathToFavouriteMovies) {
             params = JSON.parse(localStorage.getItem('queryFavouritesParams'));
         } else {
