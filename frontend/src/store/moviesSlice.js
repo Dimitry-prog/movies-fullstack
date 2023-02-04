@@ -15,7 +15,7 @@ const moviesSlice = createSlice({
     name: 'movies',
     initialState,
     reducers: {
-        getSearchedMovies: (state, action) => {
+        setSearchedMovies: (state, action) => {
             state.searchedMovies = action.payload;
         },
     },
@@ -38,6 +38,6 @@ const moviesSlice = createSlice({
     }
 });
 
-export const {getSearchedMovies} = moviesSlice.actions;
+export const {setSearchedMovies} = moviesSlice.actions;
 
 export default moviesSlice.reducer;

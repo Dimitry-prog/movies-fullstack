@@ -5,16 +5,16 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import {useDispatch, useSelector} from 'react-redux';
 import {getMovies} from '../../api/moviesApi';
 import useFormValidation from '../../hooks/useFormvalidation';
-import {getSearchedMovies} from '../../store/moviesSlice';
 import MyInput from '../UI/MyInput/MyInput';
 import {getFavouritesMovies} from '../../api/mainApi';
-import {getSearchedFavouritesMovies} from '../../store/favouriteMoviesSlice';
+import {setSearchedFavouritesMovies} from '../../store/favouriteMoviesSlice';
 import {useLocation} from 'react-router-dom';
+import {setSearchedMovies, test} from '../../store/moviesSlice';
 
 const SearchForm = () => {
     const {values, handleChange, dirties, setValues, setErrors} = useFormValidation();
-    const {movies, loading, isResponse} = useSelector(state => state.movies);
-    const {favouritesMovie} = useSelector(state => state.favouriteMovies);
+    const {movies, loading, isResponse, searchedMovies} = useSelector(state => state.movies);
+    const {favouritesMovie, isResponse: isResponseFavourites} = useSelector(state => state.favouriteMovies);
     const dispatch = useDispatch();
     const inputRef = useRef(null);
     const [isChecked, setIsChecked] = useState(false);
@@ -46,11 +46,11 @@ const SearchForm = () => {
     };
 
     useEffect(() => {
-        const filteredMovies = favouritesMovie.filter(movie => movie.nameRU.toLowerCase().includes(values.search));
+        const filteredMovies = favouritesMovie.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
 
-        if (isResponse && !isChecked) {
+        if (isResponseFavourites && !isChecked) {
             localStorage.setItem('searchedFavouritesMovies', JSON.stringify(filteredMovies));
-            dispatch(getSearchedFavouritesMovies(filteredMovies));
+            dispatch(setSearchedFavouritesMovies(filteredMovies));
             const queryParams = {
                 filteredMovies,
                 isChecked,
@@ -58,10 +58,10 @@ const SearchForm = () => {
             }
             localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
         }
-        if (isResponse && isChecked) {
+        if (isResponseFavourites && isChecked) {
             const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
             localStorage.setItem('searchedFavouritesMovies', JSON.stringify(shortMovies));
-            dispatch(getSearchedFavouritesMovies(shortMovies));
+            dispatch(setSearchedFavouritesMovies(shortMovies));
             const queryParams = {
                 filteredMovies,
                 isChecked,
@@ -69,14 +69,14 @@ const SearchForm = () => {
             }
             localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
         }
-    }, [favouritesMovie]);
+    }, [favouritesMovie, isChecked]);
 
     useEffect(() => {
-        const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(values.search));
+        const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
 
         if (isResponse && !isChecked) {
             localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
-            dispatch(getSearchedMovies(filteredMovies));
+            dispatch(setSearchedMovies(filteredMovies));
             const queryParams = {
                 filteredMovies,
                 isChecked,
@@ -87,7 +87,7 @@ const SearchForm = () => {
         if (isResponse && isChecked) {
             const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
             localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
-            dispatch(getSearchedMovies(shortMovies));
+            dispatch(setSearchedMovies(shortMovies));
             const queryParams = {
                 filteredMovies,
                 isChecked,
@@ -98,7 +98,13 @@ const SearchForm = () => {
     }, [movies]);
 
     useEffect(() => {
-        const params = JSON.parse(localStorage.getItem('queryParams'));
+        let params;
+        console.log(pathToFavouriteMovies)
+        if (pathToFavouriteMovies) {
+            params = JSON.parse(localStorage.getItem('queryFavouritesParams'));
+        } else {
+            params = JSON.parse(localStorage.getItem('queryParams'));
+        }
         setValues({
             search: params?.query || '',
         })

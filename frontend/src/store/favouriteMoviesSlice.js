@@ -7,6 +7,7 @@ const initialState = {
     favouritesMovie: [],
     loading: false,
     error: null,
+    isResponse: false,
     searchedFavouritesMovies,
 }
 
@@ -14,7 +15,7 @@ const favouriteMoviesSlice = createSlice({
     name: 'favouriteMovies',
     initialState,
     reducers: {
-        getSearchedFavouritesMovies: (state, action) => {
+        setSearchedFavouritesMovies: (state, action) => {
             state.searchedFavouritesMovies = action.payload;
         },
     },
@@ -23,10 +24,12 @@ const favouriteMoviesSlice = createSlice({
             .addCase(getFavouritesMovies.pending, (state) => {
                 state.loading = true;
                 state.error = null;
+                state.isResponse = false;
             })
             .addCase(getFavouritesMovies.fulfilled, (state, action) => {
                 state.loading = false;
-                state.searchedFavouritesMovies = action.payload;
+                state.favouritesMovie = action.payload;
+                state.isResponse = true;
             })
             .addCase(getFavouritesMovies.rejected, (state, action) => {
                 state.loading = false;
@@ -60,6 +63,6 @@ const favouriteMoviesSlice = createSlice({
     }
 });
 
-export const {getSearchedFavouritesMovies} = favouriteMoviesSlice.actions;
+export const {setSearchedFavouritesMovies} = favouriteMoviesSlice.actions;
 
 export default favouriteMoviesSlice.reducer;

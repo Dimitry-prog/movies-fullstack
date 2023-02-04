@@ -81,7 +81,9 @@ const FilmsPage = () => {
 
                 {isRenderMovies && (
                     <section className={styles.films__movies}>
-                        <MoviesCardList movies={queriedArray}/>
+                        <MoviesCardList
+                            movies={queriedArray}
+                        />
                         {queriedArray.length !== searchedMovies.length && (
                             <button
                                 onClick={handleQuery}
