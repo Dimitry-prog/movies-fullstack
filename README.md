@@ -1,6 +1,6 @@
 # movies-fullstack
 
-* [link to figma maket](https://easyupload.io/5nm6aq)
+* [link to figma maket](https://easyupload.io/r1w2na)
 * [link to pull-request level-3](https://github.com/Dimitry-prog/movies-fullstack/pull/3)
 * [link to server](https://last-diplom.nomoredomains.rocks/)
 
