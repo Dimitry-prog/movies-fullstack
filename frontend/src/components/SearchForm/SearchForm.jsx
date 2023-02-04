@@ -46,7 +46,7 @@ const SearchForm = () => {
     };
 
     useEffect(() => {
-        const filteredMovies = favouritesMovie.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
+        const filteredMovies = favouritesMovie?.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
 
         if (isResponseFavourites && !isChecked) {
             localStorage.setItem('searchedFavouritesMovies', JSON.stringify(filteredMovies));
@@ -72,7 +72,7 @@ const SearchForm = () => {
     }, [favouritesMovie, isChecked]);
 
     useEffect(() => {
-        const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
+        const filteredMovies = movies?.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
 
         if (isResponse && !isChecked) {
             localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
