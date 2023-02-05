@@ -6,6 +6,7 @@ export const moviesApi = axios.create({
     baseURL: MOVIES_URL,
     headers: {
         Accept: `application/json`,
+        "Access-Control-Allow-Origin": "*"
     }
 });
 
