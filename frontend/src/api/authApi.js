@@ -8,7 +8,7 @@ export const authApi = axios.create({
     headers: {
         'Access-Control-Allow-Origin': '*',
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
     }
 });
 
