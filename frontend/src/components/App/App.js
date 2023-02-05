@@ -19,32 +19,32 @@ function App() {
             navigate('/movies');
         }
     }, [isAuth]);
-
+    const request = (url, options) => {
+        return fetch(url, options).then(getResponseData)
+    }
+    const getResponseData = (res) => {
+        if (!res.ok) {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+    }
+    const checkUserToken2 = () => {
+        return request(`${BASE_URL}/users/me`,
+            {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+    }
     useEffect(() => {
         dispatch(checkUserToken());
-        const request = (url, options) => {
-            return fetch(url, options).then(getResponseData)
-        }
 
-        const getResponseData = (res) => {
-            if (!res.ok) {
-                return Promise.reject(`Ошибка: ${res.status}`);
-            }
-            return res.json();
-        }
-        const checkUserToken2 = () => {
-            return request(`${BASE_URL}/users/me`,
-                {
-                    method: 'GET',
-                    credentials: 'include',
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                });
-        }
+
         checkUserToken2().then(res => {
             console.log(res)
-        })
+        }).catch(e => console.log(e));
     }, []);
 
     return (
