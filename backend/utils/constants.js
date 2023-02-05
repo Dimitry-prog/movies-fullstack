@@ -17,10 +17,10 @@ export const HTTP_STATUS_CODE = {
 };
 
 export const ALLOWED_CORS = [
-  'https://last-diplom.nomoredomains.rocks/',
-  'http://last-diplom.nomoredomains.rocks/',
-  'https://api.last-diplom.nomoredomains.rocks/',
-  'http://api.last-diplom.nomoredomains.rocks/',
+  'https://last-diplom.nomoredomains.rocks',
+  'http://last-diplom.nomoredomains.rocks',
+  'https://api.last-diplom.nomoredomains.rocks',
+  'http://api.last-diplom.nomoredomains.rocks',
   'localhost:3000',
   'localhost:5000',
   'http://localhost:3000',
