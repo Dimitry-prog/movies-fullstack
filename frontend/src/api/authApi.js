@@ -7,7 +7,7 @@ export const authApi = axios.create({
     withCredentials: true,
 });
 
-authApi.defaults.headers.common['Content-Type'] = 'application/json';
+authApi.defaults.headers.common['content-type'] = 'application/json';
 
 export const registerUser = createAsyncThunk(
     'auth/register',

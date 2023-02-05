@@ -7,7 +7,7 @@ export const mainApi = axios.create({
     withCredentials: true,
 });
 
-mainApi.defaults.headers.common['Content-Type'] = 'application/json';
+mainApi.defaults.headers.common['content-type'] = 'application/json';
 
 export const getUserInfo = createAsyncThunk(
     'user/getInfo',
