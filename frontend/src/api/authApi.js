@@ -5,9 +5,12 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 export const authApi = axios.create({
     baseURL: BASE_URL,
     withCredentials: true,
+    headers: {
+        Accept: `application/json`,
+    }
 });
 
-authApi.defaults.headers.common['content-type'] = 'application/json';
+// authApi.defaults.headers.common['content-type'] = 'application/json';
 
 export const registerUser = createAsyncThunk(
     'auth/register',

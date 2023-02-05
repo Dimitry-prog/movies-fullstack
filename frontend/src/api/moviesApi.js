@@ -4,9 +4,12 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 
 export const moviesApi = axios.create({
     baseURL: MOVIES_URL,
+    headers: {
+        Accept: `application/json`,
+    }
 });
 
-moviesApi.defaults.headers.common['content-type'] = 'application/json';
+// moviesApi.defaults.headers.common['content-type'] = 'application/json';
 
 export const getMovies = createAsyncThunk(
     'movies/getMovies',
