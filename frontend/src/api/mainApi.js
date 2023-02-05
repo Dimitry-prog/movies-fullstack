@@ -6,8 +6,6 @@ export const mainApi = axios.create({
     baseURL: BASE_URL,
     withCredentials: true,
     headers: {
-        'Access-Control-Allow-Origin': '*',
-        Accept: 'application/json',
         'Content-Type': 'application/json',
     }
 });
