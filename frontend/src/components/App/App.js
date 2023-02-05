@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {checkUserToken} from '../../api/authApi';
 import {getUserInfo} from '../../api/mainApi';
+import {BASE_URL} from '../../utils/constants';
 
 function App() {
     const {isAuth} = useSelector((state) => state.auth);
@@ -21,6 +22,29 @@ function App() {
 
     useEffect(() => {
         dispatch(checkUserToken());
+        const request = (url, options) => {
+            return fetch(url, options).then(getResponseData)
+        }
+
+        const getResponseData = (res) => {
+            if (!res.ok) {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+            return res.json();
+        }
+        const checkUserToken2 = () => {
+            return request(`${BASE_URL}/users/me`,
+                {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                });
+        }
+        checkUserToken2().then(res => {
+            console.log(res)
+        })
     }, []);
 
     return (
