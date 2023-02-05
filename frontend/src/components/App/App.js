@@ -40,7 +40,7 @@ function App() {
             });
     }
     useEffect(() => {
-        dispatch(checkUserToken());
+        // dispatch(checkUserToken());
 
 
         checkUserToken2().then(res => {
