@@ -33,6 +33,7 @@ function App() {
             {
                 method: 'GET',
                 credentials: 'include',
+                mode: 'no-cors',
                 headers: {
                     "Content-Type": "application/json",
                 }
