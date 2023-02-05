@@ -6,6 +6,8 @@ export const moviesApi = axios.create({
     baseURL: MOVIES_URL,
 });
 
+moviesApi.defaults.headers.common['Content-Type'] = 'application/json';
+
 export const getMovies = createAsyncThunk(
     'movies/getMovies',
     async (_, {rejectWithValue}) => {
