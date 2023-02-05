@@ -6,8 +6,9 @@ export const authApi = axios.create({
     baseURL: BASE_URL,
     withCredentials: true,
     headers: {
-        Accept: `application/json`,
-        "Access-Control-Allow-Origin": "*"
+        'Access-Control-Allow-Origin': '*',
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
     }
 });
 
