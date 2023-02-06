@@ -10,7 +10,7 @@ export const authApi = axios.create({
     // }
 });
 
-authApi.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
+authApi.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded, application/json';
 authApi.defaults.headers.get['Accepts'] = 'application/json';
 authApi.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 authApi.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
