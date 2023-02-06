@@ -10,6 +10,7 @@ export const mainApi = axios.create({
     }
 });
 
+mainApi.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 // mainApi.defaults.headers.common['content-type'] = 'application/json';
 
 export const getUserInfo = createAsyncThunk(
