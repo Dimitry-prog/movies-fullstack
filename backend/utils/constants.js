@@ -30,7 +30,7 @@ export const ALLOWED_CORS = [
 ];
 
 export const CORS_OPTIONS = {
-  origin: "*",
+  origin: ALLOWED_CORS,
   optionsSuccessStatus: 200,
   credentials: true,
 };
