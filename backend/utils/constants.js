@@ -30,9 +30,11 @@ export const ALLOWED_CORS = [
 ];
 
 export const CORS_OPTIONS = {
-  origin: '*',
-  optionsSuccessStatus: 200,
-  credentials: true,
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 200,
+  "credentials": true,
 };
 
 export const DB_URL_DEV = 'mongodb://localhost:27017/bitfilmsdb';
