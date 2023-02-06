@@ -24,7 +24,7 @@ app.use(express.json());
 
 app.use(express.static('../frontend/build'));
 
-// app.use(cors());
+app.use(cors(CORS_OPTIONS));
 
 app.use(appRouter);
 
