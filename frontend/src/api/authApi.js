@@ -3,7 +3,7 @@ import {BASE_URL} from '../utils/constants';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 
 export const authApi = axios.create({
-    baseURL: BASE_URL,
+    // baseURL: BASE_URL,
     withCredentials: true,
     // headers: {
     //     'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export const checkUserToken = createAsyncThunk(
     'auth/checkToken',
     async (_, {rejectWithValue}) => {
         try {
-            await authApi(`users/me`);
+            await authApi.get(`https://api.last-diplom.nomoredomains.rocks/users/me`);
         } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
