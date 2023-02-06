@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {BASE_URL} from '../utils/constants';
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {mainApi} from './mainApi';
 
 export const authApi = axios.create({
     baseURL: BASE_URL,
@@ -10,7 +9,9 @@ export const authApi = axios.create({
         'Content-Type': 'application/json',
     }
 });
+authApi.defaults.headers.get['Accepts'] = 'application/json';
 authApi.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+authApi.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
 // authApi.defaults.headers.common['content-type'] = 'application/json';
 
 export const registerUser = createAsyncThunk(
