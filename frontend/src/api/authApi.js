@@ -8,6 +8,7 @@ export const authApi = axios.create({
     // headers: {
     //     'Content-Type': 'application/json',
     // }
+    crossdomain: true,
 });
 
 authApi.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded, application/json';
@@ -23,6 +24,7 @@ export const registerUser = createAsyncThunk(
             const {data} = await authApi.post(
                 `/signup`,
                 {name, email, password},
+                {crossdomain: true}
             );
 
             return data
