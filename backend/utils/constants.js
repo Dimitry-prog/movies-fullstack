@@ -31,12 +31,6 @@ export const ALLOWED_CORS = [
 
 export const CORS_OPTIONS = {
   credentials: true,
-  allowedOrigins: '*',
-  allowedOriginsPatterns: [],
-  allowedHeaders: '*',
-  allowedMethods: '*',
-  exposedHeaders: [],
-  maxAge: 0,
   origin: '*',
 };
 

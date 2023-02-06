@@ -32,7 +32,8 @@ const Login = () => {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    'Access-Control-Allow-Origin': "*",
                 },
                 body: JSON.stringify({
                     email,
