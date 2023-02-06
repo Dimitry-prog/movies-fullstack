@@ -14,13 +14,40 @@ const Login = () => {
     const dispatch = useDispatch()
     const loginInputs = initInputs.slice(1, 3);
 
+    const request = (url, options) => {
+        return fetch(url, options).then(getResponseData)
+    }
+
+    const getResponseData = (res) => {
+        if (!res.ok) {
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }
+        return res.json();
+    }
+
+    export const authorizeUser = (email, password) => {
+        return request(`${BASE_URL}/signin`,
+            {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            });
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(loginUser(values));
+        authorizeUser(values.email, values.password).then(res => console.log(res));
         if (!authError) {
             resetForm();
         }
     }
+
     return (
         <div className={styles.login}>
             <header>
