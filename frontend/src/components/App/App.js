@@ -44,9 +44,9 @@ function App() {
         // dispatch(checkUserToken());
 
 
-        checkUserToken2().then(res => {
-            console.log(res)
-        }).catch(e => console.log(e));
+        // checkUserToken2().then(res => {
+        //     console.log(res)
+        // }).catch(e => console.log(e));
     }, []);
 
     return (
