@@ -25,7 +25,7 @@ const Login = () => {
         return res.json();
     }
 
-    export const authorizeUser = (email, password) => {
+    const authorizeUser = (email, password) => {
         return request(`${BASE_URL}/signin`,
             {
                 method: 'POST',
