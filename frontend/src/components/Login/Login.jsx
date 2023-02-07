@@ -7,7 +7,6 @@ import useFormValidation from '../../hooks/useFormvalidation';
 import {loginUser} from '../../api/authApi';
 import {initInputs} from '../../data/initInputs';
 import MyInput from '../UI/MyInput/MyInput';
-import {BASE_URL} from '../../utils/constants';
 
 const Login = () => {
     const {values, isValid, handleChange, dirties, resetForm} = useFormValidation();
@@ -15,35 +14,9 @@ const Login = () => {
     const dispatch = useDispatch()
     const loginInputs = initInputs.slice(1, 3);
 
-    const request = (url, options) => {
-        return fetch(url, options).then(getResponseData)
-    }
-
-    const getResponseData = (res) => {
-        if (!res.ok) {
-            return Promise.reject(`Ошибка: ${res.status}`);
-        }
-        return res.json();
-    }
-
-    const authorizeUser = (email, password) => {
-        return request(`${BASE_URL}/signin`,
-            {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email,
-                    password
-                })
-            });
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        authorizeUser(values.email, values.password).then(res => console.log(res));
+        dispatch(loginUser(values));
         if (!authError) {
             resetForm();
         }
@@ -66,6 +39,7 @@ const Login = () => {
                     ))}
                     <div>
                         {(!isValid && authError) && <span>Вы ввели неправильный логин или пароль.</span>}
+                        {authError && <span>Вы ввели неправильный логин или пароль.</span>}
                         <button type='submit' disabled={!isValid} aria-label='submit form'>
                             {loading ? 'Выполняем вход' : 'Войти'}
                         </button>
