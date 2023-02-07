@@ -3,18 +3,18 @@ import {BASE_URL} from '../utils/constants';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 
 export const authApi = axios.create({
-    // baseURL: BASE_URL,
+    baseURL: BASE_URL,
     withCredentials: true,
-    // headers: {
-    //     'Content-Type': 'application/json',
-    // }
-    crossdomain: true,
+    headers: {
+        'Content-Type': 'application/json',
+    }
+    // crossdomain: true,
 });
 
-authApi.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded, application/json';
-authApi.defaults.headers.get['Accepts'] = 'application/json';
-authApi.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-authApi.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+// authApi.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded, application/json';
+// authApi.defaults.headers.get['Accepts'] = 'application/json';
+// authApi.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+// authApi.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
 // authApi.defaults.headers.common['content-type'] = 'application/json';
 
 export const registerUser = createAsyncThunk(
@@ -24,7 +24,6 @@ export const registerUser = createAsyncThunk(
             const {data} = await authApi.post(
                 `/signup`,
                 {name, email, password},
-                {crossdomain: true}
             );
 
             return data
@@ -78,7 +77,7 @@ export const checkUserToken = createAsyncThunk(
     'auth/checkToken',
     async (_, {rejectWithValue}) => {
         try {
-            await authApi.get(`https://api.last-diplom.nomoredomains.rocks/users/me`);
+            await authApi(`/users/me`);
         } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)

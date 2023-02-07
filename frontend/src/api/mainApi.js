@@ -5,10 +5,13 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 export const mainApi = axios.create({
     baseURL: BASE_URL,
     withCredentials: true,
+    headers: {
+        'Content-Type': 'application/json',
+    }
 });
 
-mainApi.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-mainApi.defaults.headers.common['Content-Type'] = 'application/json';
+// mainApi.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+// mainApi.defaults.headers.common['Content-Type'] = 'application/json';
 
 export const getUserInfo = createAsyncThunk(
     'user/getInfo',

@@ -36,7 +36,6 @@ function App() {
                 // mode: 'no-cors',
                 headers: {
                     "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*"
                 }
             });
     }
