@@ -7,7 +7,7 @@ export const initInputs = [
         label: 'Имя',
         errorMsg: 'Это поле может содержать только латиницу, кириллицу, пробел или дефис',
         required: true,
-        pattern: `^[A-Za-zА-Яа-я\s\\-]{2,30}`,
+        pattern: `^[\\sA-Za-zА-Яа-яё\-]{2,30}`,
     },
     {
         id: 2,

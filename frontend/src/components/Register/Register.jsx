@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styles from './Register.module.scss';
 import {Link, useNavigate} from 'react-router-dom';
 import logo from '../../images/logo.svg';
@@ -10,24 +10,19 @@ import {initInputs} from '../../data/initInputs';
 
 const Register = () => {
     const {values, isValid, handleChange, dirties, resetForm} = useFormValidation();
-    const {loading, error: authError, success} = useSelector(state => state.auth);
+    const {loading, error: authError} = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const registerInput = initInputs.slice(0, 3);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(registerUser(values));
-        if (success) {
-            resetForm();
-        }
+        dispatch(registerUser(values))
+            .then(res => {
+                navigate('/movies');
+                resetForm();
+            });
     };
-
-    useEffect(() => {
-        if (success) {
-            navigate('/signin')
-        }
-    }, [success]);
 
     return (
         <div className={styles.register}>
@@ -45,7 +40,7 @@ const Register = () => {
                         />
                     ))}
                     <div>
-                        {authError && <span>{authError}</span>}
+                        {authError && <span>Что-то пошло не так</span>}
                         <button type='submit' disabled={!isValid} aria-label='submit form'>
                             {loading ? 'Регистрация' : 'Зарегистрироваться'}
                         </button>
