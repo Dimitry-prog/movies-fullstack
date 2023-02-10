@@ -12,7 +12,7 @@ import {errorLogger, requestLogger} from './middlewares/logger.js';
 
 dotenv.config();
 
-const {PORT = 3000} = process.env;
+const {PORT = 5000} = process.env;
 const app = express();
 
 app.use(requestLogger);

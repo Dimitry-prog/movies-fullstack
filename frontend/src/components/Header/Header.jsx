@@ -33,7 +33,7 @@ const Header = () => {
 
                 {isAuth && (
                     <>
-                        <Link to='/movies' className={styles.logo}><img src={logo} alt="logo"/></Link>
+                        <Link to='/' className={styles.logo}><img src={logo} alt="logo"/></Link>
 
                         <nav className={styles.header__nav}>
                             <ul className={styles.header__list}>

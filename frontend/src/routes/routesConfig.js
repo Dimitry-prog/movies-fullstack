@@ -44,6 +44,10 @@ export const privateRoutes = [
         component: <EditProfile/>,
     },
     {
+        path: '/',
+        component: <HomePage/>,
+    },
+    {
         path: '*',
         component: <NotFound/>,
     },
