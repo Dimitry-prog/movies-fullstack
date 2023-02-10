@@ -5,6 +5,7 @@ import {patchUserInfo} from '../../api/mainApi';
 import useFormValidation from '../../hooks/useFormvalidation';
 import {Link} from 'react-router-dom';
 import MyInput from '../UI/MyInput/MyInput';
+import {openInfoTooltip} from '../../store/modalSlice';
 
 const EditProfile = () => {
     const {user} = useSelector(state => state.user);
@@ -15,31 +16,31 @@ const EditProfile = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(patchUserInfo(values));
-    }
+        dispatch(patchUserInfo(values))
+            .then(res => {
+                dispatch(openInfoTooltip('Ваши данные успешно сохранены!'))
+            });
+    };
 
     useEffect(() => {
         nameRef.current.focus();
-    }, []);
-
-    useEffect(() => {
         setValues({
             name: user.name,
             email: user.email,
-        })
+        });
     }, []);
 
     useEffect(() => {
         if (values.name === user.name && values.email === user.email) {
             nameRef.current.setCustomValidity('Надо изменить данные');
             emailRef.current.setCustomValidity('Надо изменить данные');
-            setIsValid(false)
+            setIsValid(false);
         } else {
             nameRef.current.setCustomValidity("");
             emailRef.current.setCustomValidity("");
-            setIsValid(true)
+            setIsValid(true);
         }
-    }, [values]);
+    }, [values, isValid]);
 
     return (
         <section className={styles.profile}>
@@ -52,7 +53,7 @@ const EditProfile = () => {
                     name="name"
                     type='text'
                     label='Имя'
-                    pattern="^[A-Za-zА-Яа-я\s\-]{2,30}"
+                    pattern="^[ёA-Za-zА-Яа-я\s\-]{2,30}"
                     required
                     myClass={styles.edit}
                     dirtied={dirties.name?.toString()}

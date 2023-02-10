@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {checkUserToken} from '../../api/authApi';
 import {getUserInfo} from '../../api/mainApi';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 function App() {
     const {isAuth} = useSelector((state) => state.auth);
@@ -24,6 +25,7 @@ function App() {
     return (
         <>
             <Sidebar/>
+            <InfoTooltip/>
             {isAuth
                 ? (
                     <Routes>
