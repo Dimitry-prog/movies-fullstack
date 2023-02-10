@@ -25,7 +25,7 @@ const SearchForm = () => {
         e.preventDefault();
         if (values.search === '') {
             setErrors({
-                search: 'Строка не может быть пустой'
+                search: 'Нужно ввести ключевое слово'
             });
             inputRef.current.setAttribute('dirtied', true);
         } else {
@@ -37,7 +37,7 @@ const SearchForm = () => {
         e.preventDefault();
         if (values.search === '') {
             setErrors({
-                search: 'Строка не может быть пустой'
+                search: 'Нужно ввести ключевое слово'
             });
             inputRef.current.setAttribute('dirtied', true);
         } else {
@@ -46,7 +46,7 @@ const SearchForm = () => {
     };
 
     useEffect(() => {
-        const filteredMovies = movies?.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
+        const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
 
         if (isResponse && !isChecked) {
             localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
@@ -72,7 +72,7 @@ const SearchForm = () => {
     }, [movies]);
 
     useEffect(() => {
-        const filteredMovies = favouritesMovie?.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
+        const filteredMovies = favouritesMovie.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
 
         if (isResponseFavourites && !isChecked) {
             localStorage.setItem('searchedFavouritesMovies', JSON.stringify(filteredMovies));
@@ -141,11 +141,11 @@ const SearchForm = () => {
                         name='search'
                         type='text'
                         placeholder='Фильм'
-                        pattern="[a-zA-Zа-яА-Я0-9\s]{1,}"
+                        pattern="[a-zA-Zа-яА-Я0-9ё\s]{1,}"
                         required
                         dirtied={dirties.search?.toString()}
                         myClass={styles.search}
-                        errorMsg='Строка не может быть пустой и содержать символы'
+                        errorMsg='Нужно ввести ключевое слово'
                     />
                     <button type='submit' aria-label='submit'>
                         {loading ? 'Поиск' : 'Найти'}
