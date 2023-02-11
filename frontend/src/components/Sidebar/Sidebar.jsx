@@ -6,7 +6,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {closeModal} from '../../store/modalSlice';
 
 const Sidebar = () => {
-    const {isAuth} = useSelector((state) => state.auth);
     const {isOpen} = useSelector(state => state.modal);
     const dispatch = useDispatch();
 
@@ -18,13 +17,11 @@ const Sidebar = () => {
                     type='button'></button>
                 <nav>
                     <ul>
-                        {!isAuth && (
-                            <li
-                                onClick={() => dispatch(closeModal())}
-                            >
-                                <NavLink to='/'>Главная</NavLink>
-                            </li>
-                        )}
+                        <li
+                            onClick={() => dispatch(closeModal())}
+                        >
+                            <NavLink to='/'>Главная</NavLink>
+                        </li>
                         <li
                             onClick={() => dispatch(closeModal())}
                         >

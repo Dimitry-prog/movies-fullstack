@@ -13,15 +13,16 @@ import {setSearchedMovies} from '../../store/moviesSlice';
 
 const SearchForm = () => {
     const {values, handleChange, dirties, setValues, setErrors} = useFormValidation();
-    const {movies, loading, isResponse} = useSelector(state => state.movies);
-    const {favouritesMovie, isResponse: isResponseFavourites} = useSelector(state => state.favouriteMovies);
+    const {movies, loading} = useSelector(state => state.movies);
+    const {favouritesMovie} = useSelector(state => state.favouriteMovies);
     const dispatch = useDispatch();
     const inputRef = useRef(null);
     const [isChecked, setIsChecked] = useState(false);
     const location = useLocation();
     const pathToFavouriteMovies = location.pathname === '/saved-movies';
+    const params = JSON.parse(localStorage.getItem('queryParams'));
 
-    const handleSubmitMovies = (e) => {
+    const handleSubmitMovies = async (e) => {
         e.preventDefault();
         if (values.search === '') {
             setErrors({
@@ -29,7 +30,38 @@ const SearchForm = () => {
             });
             inputRef.current.setAttribute('dirtied', true);
         } else {
-            dispatch(getMovies());
+            let filteredMovies = [];
+            const queryParams = {
+                filteredMovies,
+                isChecked,
+                query: values.search
+            }
+            localStorage.setItem('queryParams', JSON.stringify(queryParams));
+
+            if (!movies.length) {
+                const getFilms = await dispatch(getMovies());
+                localStorage.setItem('movies', JSON.stringify(getFilms.payload));
+                filteredMovies = getFilms.payload.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
+                if (!isChecked) {
+                    localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
+                    dispatch(setSearchedMovies(filteredMovies));
+                } else {
+                    const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+                    localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
+                    dispatch(setSearchedMovies(shortMovies));
+                }
+            } else {
+                const parseMovies = JSON.parse(localStorage.getItem('movies'));
+                filteredMovies = parseMovies.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
+                if (!isChecked) {
+                    localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
+                    dispatch(setSearchedMovies(filteredMovies));
+                } else {
+                    const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+                    localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
+                    dispatch(setSearchedMovies(shortMovies));
+                }
+            }
         }
     };
 
@@ -46,60 +78,39 @@ const SearchForm = () => {
     };
 
     useEffect(() => {
-        const filteredMovies = movies.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
-
-        if (isResponse && !isChecked) {
-            localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
-            dispatch(setSearchedMovies(filteredMovies));
+        const parseMovies = JSON.parse(localStorage.getItem('movies'));
+        if (parseMovies && !pathToFavouriteMovies) {
+            const filteredMovies = parseMovies.filter(movie => movie.nameRU.toLowerCase().includes(params?.query?.toLowerCase()));
             const queryParams = {
                 filteredMovies,
                 isChecked,
-                query: values.search
+                query: params?.query,
             }
             localStorage.setItem('queryParams', JSON.stringify(queryParams));
-        }
-        if (isResponse && isChecked) {
-            const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
-            localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
-            dispatch(setSearchedMovies(shortMovies));
-            const queryParams = {
-                filteredMovies,
-                isChecked,
-                query: values.search
-            }
-            localStorage.setItem('queryParams', JSON.stringify(queryParams));
-        }
-    }, [movies]);
 
-    useEffect(() => {
-        const filteredMovies = favouritesMovie.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
-
-        if (isResponseFavourites && !isChecked) {
-            localStorage.setItem('searchedFavouritesMovies', JSON.stringify(filteredMovies));
-            dispatch(setSearchedFavouritesMovies(filteredMovies));
-            const queryParams = {
-                filteredMovies,
-                isChecked,
-                query: values.search
+            if (!isChecked) {
+                localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
+                dispatch(setSearchedMovies(filteredMovies));
+            } else {
+                const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+                localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
+                dispatch(setSearchedMovies(shortMovies));
             }
-            localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
         }
-        if (isResponseFavourites && isChecked) {
-            const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
-            localStorage.setItem('searchedFavouritesMovies', JSON.stringify(shortMovies));
-            dispatch(setSearchedFavouritesMovies(shortMovies));
-            const queryParams = {
-                filteredMovies,
-                isChecked,
-                query: values.search
+        if (pathToFavouriteMovies) {
+            const filteredMovies = favouritesMovie.filter(movie => movie.nameRU.toLowerCase().includes(values.search?.toLowerCase()));
+
+            if (!isChecked) {
+                dispatch(setSearchedFavouritesMovies(filteredMovies));
+            } else {
+                const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+                dispatch(setSearchedFavouritesMovies(shortMovies));
             }
-            localStorage.setItem('queryFavouritesParams', JSON.stringify(queryParams));
         }
     }, [favouritesMovie, isChecked]);
 
     useEffect(() => {
         if (!pathToFavouriteMovies) {
-            const params = JSON.parse(localStorage.getItem('queryParams'));
             setValues({
                 search: params?.query || '',
             })
@@ -108,21 +119,15 @@ const SearchForm = () => {
             } else {
                 setIsChecked(false);
             }
+        } else {
+            setValues({
+                search: '',
+            })
         }
     }, []);
 
     useEffect(() => {
-        if (pathToFavouriteMovies) {
-            const params = JSON.parse(localStorage.getItem('queryFavouritesParams'));
-            setValues({
-                search: params?.query || '',
-            })
-            if (params) {
-                setIsChecked(params.isChecked);
-            } else {
-                setIsChecked(false);
-            }
-        }
+        dispatch(getFavouritesMovies());
     }, []);
 
     return (

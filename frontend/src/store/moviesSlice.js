@@ -2,9 +2,10 @@ import {createSlice} from '@reduxjs/toolkit';
 import {getMovies} from '../api/moviesApi';
 
 const searchedMovies = localStorage.getItem('searchedMovies') ? JSON.parse(localStorage.getItem('searchedMovies')) : [];
+const movies = localStorage.getItem('movies') ? JSON.parse(localStorage.getItem('movies')) : [];
 
 const initialState = {
-    movies: [],
+    movies,
     loading: false,
     error: null,
     isResponse: false,

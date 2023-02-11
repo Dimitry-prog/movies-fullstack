@@ -12,6 +12,8 @@ const Profile = () => {
         dispatch(logoutUser());
         localStorage.removeItem('searchedMovies');
         localStorage.removeItem('queryParams');
+        localStorage.removeItem('searchedFavouritesMovies');
+        localStorage.removeItem('movies');
     }
 
     return (

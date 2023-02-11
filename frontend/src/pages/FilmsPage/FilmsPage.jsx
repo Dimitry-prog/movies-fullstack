@@ -50,15 +50,11 @@ const FilmsPage = () => {
             setQtyMovies(5);
             setQuery(5);
         }
-        if (resize < 550) {
-            setQtyMovies(3);
-            setQuery(3);
-        }
     }, [resize]);
 
-    useEffect(() => {
-        dispatch(getFavouritesMovies());
-    }, []);
+    // useEffect(() => {
+    //     dispatch(getFavouritesMovies());
+    // }, []);
 
     return (
         <div className={styles.films}>

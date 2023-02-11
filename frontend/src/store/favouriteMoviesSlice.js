@@ -1,14 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {createMovie, deleteMovie, getFavouritesMovies} from '../api/mainApi';
 
-const searchedFavouritesMovies = localStorage.getItem('searchedFavouritesMovies') ? JSON.parse(localStorage.getItem('searchedFavouritesMovies')) : [];
-
 const initialState = {
     favouritesMovie: [],
     loading: false,
     error: null,
     isResponse: false,
-    searchedFavouritesMovies,
+    searchedFavouritesMovies: [],
 }
 
 const favouriteMoviesSlice = createSlice({
