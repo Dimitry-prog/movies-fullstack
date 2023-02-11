@@ -36,12 +36,13 @@ const Register = () => {
                         <MyInput key={input.id}
                                  onChange={handleChange}
                                  dirtied={dirties[input.name]?.toString()}
+                                 disabled={loading}
                                  {...input}
                         />
                     ))}
                     <div>
                         {authError && <span>Что-то пошло не так</span>}
-                        <button type='submit' disabled={!isValid} aria-label='submit form'>
+                        <button type='submit' disabled={!isValid || loading} aria-label='submit form'>
                             {loading ? 'Регистрация' : 'Зарегистрироваться'}
                         </button>
                     </div>

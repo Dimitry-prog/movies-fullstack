@@ -60,9 +60,15 @@ const FilmsPage = () => {
 
                 {loading && <Loader/>}
 
-                {searchedMovies.length === 0 && isResponse && !loading && (
-                    <p className={styles.films__noresult}>Ничего не найдено</p>
-                )}
+                {!searchedMovies.length && isResponse && !loading
+                    ? (
+                        <p className={styles.films__noresult}>Ничего не найдено</p>
+                    )
+                    : !queriedArray.length
+                        ? (
+                            <p className={styles.films__noresult}>Ничего не найдено</p>
+                        )
+                        : ''}
 
                 {error !== null && !loading && (
                     <p className={styles.films__error}>Во время запроса произошла ошибка. Возможно, проблема с

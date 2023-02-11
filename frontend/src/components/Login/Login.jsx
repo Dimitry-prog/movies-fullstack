@@ -36,12 +36,13 @@ const Login = () => {
                         <MyInput key={input.id}
                                  onChange={handleChange}
                                  dirtied={dirties[input.name]?.toString()}
+                                 disabled={loading}
                                  {...input}
                         />
                     ))}
                     <div>
                         {authError && <span>Вы ввели неправильный логин или пароль.</span>}
-                        <button type='submit' disabled={!isValid} aria-label='submit form'>
+                        <button type='submit' disabled={!isValid || loading} aria-label='submit form'>
                             {loading ? 'Выполняем вход' : 'Войти'}
                         </button>
                     </div>

@@ -8,7 +8,7 @@ import MyInput from '../UI/MyInput/MyInput';
 import {openInfoTooltip} from '../../store/modalSlice';
 
 const EditProfile = () => {
-    const {user} = useSelector(state => state.user);
+    const {user, loading} = useSelector(state => state.user);
     const {values, setValues, isValid, dirties, setIsValid, handleChange} = useFormValidation();
     const nameRef = useRef(null);
     const emailRef = useRef(null);
@@ -72,7 +72,7 @@ const EditProfile = () => {
                     dirtied={dirties.email?.toString()}
                     errorMsg='Это поле должно соответсвовать формату почты, например: example@gmail.com'
                 />
-                <button type='submit' disabled={!isValid} aria-label='submit form'>Сохранить</button>
+                <button type='submit' disabled={!isValid || loading} aria-label='submit form'>Сохранить</button>
             </form>
             <Link to='/profile'>
                 Назад

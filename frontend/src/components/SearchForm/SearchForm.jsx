@@ -14,7 +14,7 @@ import {setSearchedMovies} from '../../store/moviesSlice';
 const SearchForm = () => {
     const {values, handleChange, dirties, setValues, setErrors} = useFormValidation();
     const {movies, loading} = useSelector(state => state.movies);
-    const {favouritesMovie} = useSelector(state => state.favouriteMovies);
+    const {favouritesMovie, loading: loadingFavourite} = useSelector(state => state.favouriteMovies);
     const dispatch = useDispatch();
     const inputRef = useRef(null);
     const [isChecked, setIsChecked] = useState(false);
@@ -151,8 +151,9 @@ const SearchForm = () => {
                         dirtied={dirties.search?.toString()}
                         myClass={styles.search}
                         errorMsg='Нужно ввести ключевое слово'
+                        disabled={loading || loadingFavourite}
                     />
-                    <button type='submit' aria-label='submit'>
+                    <button type='submit' aria-label='submit' disabled={loading || loadingFavourite}>
                         {loading ? 'Поиск' : 'Найти'}
                     </button>
                 </div>
