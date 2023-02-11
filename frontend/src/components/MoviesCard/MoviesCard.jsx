@@ -71,7 +71,12 @@ const MoviesCard = ({movie}) => {
                         ></button>
                     )}
             </div>
-            <img src={!pathToFavouriteMovies ? imageUrl : image} alt={nameRU}/>
+            <a href={trailerLink}
+               target='_blank'
+               rel="noreferrer noopener"
+            >
+                <img src={!pathToFavouriteMovies ? imageUrl : image} alt={nameRU}/>
+            </a>
         </div>
     );
 };

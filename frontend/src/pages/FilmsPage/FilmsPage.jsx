@@ -4,9 +4,8 @@ import SearchForm from '../../components/SearchForm/SearchForm';
 import MoviesCardList from '../../components/MoviesCardList/MoviesCardList';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import Loader from '../../components/Loader/Loader';
-import {getFavouritesMovies} from '../../api/mainApi';
 
 const FilmsPage = () => {
     const {
@@ -20,7 +19,6 @@ const FilmsPage = () => {
     const [resize, setResize] = useState(null);
     const [query, setQuery] = useState(qtyMovies);
     const queriedArray = searchedMovies.slice(0, query);
-    const dispatch = useDispatch();
     const isRenderMovies = !loading && searchedMovies.length !== 0 && error === null;
 
     const handleQuery = () => {
@@ -33,7 +31,7 @@ const FilmsPage = () => {
 
         const timeOut = setTimeout(() => {
             handleResize();
-        }, 1000);
+        }, 3000);
 
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -51,10 +49,6 @@ const FilmsPage = () => {
             setQuery(5);
         }
     }, [resize]);
-
-    // useEffect(() => {
-    //     dispatch(getFavouritesMovies());
-    // }, []);
 
     return (
         <div className={styles.films}>
