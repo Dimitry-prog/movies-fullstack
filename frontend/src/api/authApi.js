@@ -8,14 +8,7 @@ export const authApi = axios.create({
     headers: {
         'Content-Type': 'application/json',
     }
-    // crossdomain: true,
 });
-
-// authApi.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded, application/json';
-// authApi.defaults.headers.get['Accepts'] = 'application/json';
-// authApi.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-// authApi.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
-// authApi.defaults.headers.common['content-type'] = 'application/json';
 
 export const registerUser = createAsyncThunk(
     'auth/register',

@@ -1,21 +1,15 @@
 import React from 'react';
 import styles from './NotFound.module.scss';
-import {Link} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
 const NotFound = () => {
-    const {isAuth} = useSelector((state) => state.auth);
+    const navigate = useNavigate();
 
     return (
         <main className={styles.notFound}>
             <h1>404</h1>
             <p>Страница не найдена</p>
-            {isAuth
-                ? (
-                    <Link to='/movies'>Назад</Link>
-                ) : (
-                    <Link to='/'>Назад</Link>
-                )}
+            <button onClick={() => navigate(-1)}>Назад</button>
         </main>
     );
 };

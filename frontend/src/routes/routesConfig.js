@@ -22,7 +22,7 @@ export const publicRoutes = [
     },
     {
         path: '*',
-        component: <NotFound/>,
+        component: <HomePage/>,
     },
 ];
 
