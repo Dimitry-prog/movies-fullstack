@@ -10,6 +10,7 @@ import {getFavouritesMovies} from '../../api/mainApi';
 import {setSearchedFavouritesMovies} from '../../store/favouriteMoviesSlice';
 import {useLocation} from 'react-router-dom';
 import {setSearchedMovies} from '../../store/moviesSlice';
+import {SHORT_MOVIE_DURATION} from '../../utils/constants';
 
 const SearchForm = () => {
     const {values, handleChange, dirties, setValues, setErrors} = useFormValidation();
@@ -46,7 +47,7 @@ const SearchForm = () => {
                     localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
                     dispatch(setSearchedMovies(filteredMovies));
                 } else {
-                    const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+                    const shortMovies = filteredMovies.filter(movie => movie.duration <= SHORT_MOVIE_DURATION);
                     localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
                     dispatch(setSearchedMovies(shortMovies));
                 }
@@ -57,7 +58,7 @@ const SearchForm = () => {
                     localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
                     dispatch(setSearchedMovies(filteredMovies));
                 } else {
-                    const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+                    const shortMovies = filteredMovies.filter(movie => movie.duration <= SHORT_MOVIE_DURATION);
                     localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
                     dispatch(setSearchedMovies(shortMovies));
                 }
@@ -92,7 +93,7 @@ const SearchForm = () => {
                 localStorage.setItem('searchedMovies', JSON.stringify(filteredMovies));
                 dispatch(setSearchedMovies(filteredMovies));
             } else {
-                const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+                const shortMovies = filteredMovies.filter(movie => movie.duration <= SHORT_MOVIE_DURATION);
                 localStorage.setItem('searchedMovies', JSON.stringify(shortMovies));
                 dispatch(setSearchedMovies(shortMovies));
             }
@@ -103,7 +104,7 @@ const SearchForm = () => {
             if (!isChecked) {
                 dispatch(setSearchedFavouritesMovies(filteredMovies));
             } else {
-                const shortMovies = filteredMovies.filter(movie => movie.duration <= 40);
+                const shortMovies = filteredMovies.filter(movie => movie.duration <= SHORT_MOVIE_DURATION);
                 dispatch(setSearchedFavouritesMovies(shortMovies));
             }
         }

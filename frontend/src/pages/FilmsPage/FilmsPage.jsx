@@ -6,6 +6,12 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import {useSelector} from 'react-redux';
 import Loader from '../../components/Loader/Loader';
+import {
+    BREAKPOINT_DESKTOP,
+    QTY_MOVIES_REP_PAGE_ON_DESKTOP,
+    QTY_MOVIES_REP_PAGE_ON_MOBILE,
+    QTY_MOVIES_REQUEST_ON_DESKTOP, QTY_MOVIES_REQUEST_ON_MOBILE
+} from '../../utils/constants';
 
 const FilmsPage = () => {
     const {
@@ -15,7 +21,7 @@ const FilmsPage = () => {
         error,
     } = useSelector(state => state.movies);
 
-    const [qtyMovies, setQtyMovies] = useState(7);
+    const [qtyMovies, setQtyMovies] = useState(QTY_MOVIES_REQUEST_ON_DESKTOP);
     const [resize, setResize] = useState(null);
     const [query, setQuery] = useState(qtyMovies);
     const queriedArray = searchedMovies.slice(0, query);
@@ -40,13 +46,13 @@ const FilmsPage = () => {
     }, []);
 
     useEffect(() => {
-        if (resize > 770) {
-            setQtyMovies(7);
-            setQuery(7);
+        if (resize > BREAKPOINT_DESKTOP) {
+            setQtyMovies(QTY_MOVIES_REQUEST_ON_DESKTOP);
+            setQuery(QTY_MOVIES_REP_PAGE_ON_DESKTOP);
         }
-        if (resize < 770) {
-            setQtyMovies(5);
-            setQuery(5);
+        if (resize < BREAKPOINT_DESKTOP) {
+            setQtyMovies(QTY_MOVIES_REQUEST_ON_MOBILE);
+            setQuery(QTY_MOVIES_REP_PAGE_ON_MOBILE);
         }
     }, [resize]);
 
