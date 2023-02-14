@@ -1,7 +1,7 @@
 import UserModel from '../models/UserModel.js';
 import NotFoundError from '../errors/NotFoundError .js';
 import BadRequestError from '../errors/BadRequestError.js';
-import { ERRORS_MESSAGE, ERRORS_NAME } from '../utils/constants.js';
+import {ERRORS_MESSAGE, ERRORS_NAME} from '../utils/constants.js';
 
 export const getUser = async (req, res, next) => {
   try {
@@ -22,7 +22,7 @@ export const getUser = async (req, res, next) => {
 
 export const updateUserInfo = async (req, res, next) => {
   try {
-    const { name, email } = req.body;
+    const {name, email} = req.body;
     const data = {
       name,
       email,

@@ -31,7 +31,7 @@
     }
   }
 
-  a {
+  button {
     @include custom-font-size(14px, 17px);
     color: $accent-color-blue;
 

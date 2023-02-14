@@ -1,9 +1,29 @@
 import React from 'react';
 import styles from './Register.module.scss';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import logo from '../../images/logo.svg';
+import {useDispatch, useSelector} from 'react-redux';
+import useFormValidation from '../../hooks/useFormvalidation';
+import {registerUser} from '../../api/authApi';
+import MyInput from '../UI/MyInput/MyInput';
+import {initInputs} from '../../data/initInputs';
 
 const Register = () => {
+    const {values, isValid, handleChange, dirties, resetForm} = useFormValidation();
+    const {loading, error: authError} = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const registerInput = initInputs.slice(0, 3);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(registerUser(values))
+            .then(res => {
+                navigate('/movies');
+                resetForm();
+            });
+    };
+
     return (
         <div className={styles.register}>
             <header>
@@ -11,25 +31,21 @@ const Register = () => {
                 <h1>Добро пожаловать!</h1>
             </header>
             <main>
-                <form>
+                <form onSubmit={handleSubmit} noValidate>
+                    {registerInput.map(input => (
+                        <MyInput key={input.id}
+                                 onChange={handleChange}
+                                 dirtied={dirties[input.name]?.toString()}
+                                 disabled={loading}
+                                 {...input}
+                        />
+                    ))}
                     <div>
-                        <p>Имя</p>
-                        <input type="text" placeholder='Введите ваше имя'/>
-                        <span></span>
+                        {authError && <span>Что-то пошло не так</span>}
+                        <button type='submit' disabled={!isValid || loading} aria-label='submit form'>
+                            {loading ? 'Регистрация' : 'Зарегистрироваться'}
+                        </button>
                     </div>
-                    <div>
-                        <p>E-mail</p>
-                        <input type="text" placeholder='Введите вашу почту'/>
-                        <span></span>
-                    </div>
-                    <div>
-                        <p>Пароль</p>
-                        <input type="text" placeholder='Введите пароль'/>
-                        <span></span>
-                    </div>
-                    <button type='submit'>
-                        Зарегистрироваться
-                    </button>
                 </form>
                 <div className={styles.register__signin}>
                     <p>Уже зарегистрированы?</p>

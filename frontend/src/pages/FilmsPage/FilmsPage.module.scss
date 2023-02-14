@@ -42,4 +42,36 @@
       margin: 70px 0;
     }
   }
+
+  &__noresult {
+    @include max-width-center;
+    @include custom-font-size(16px, 20px);
+    text-align: center;
+    padding: 0 70px;
+
+    @media screen and (max-width: 770px) {
+      @include custom-font-size(12px, 15px);
+      padding: 0 30px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 0 10px;
+    }
+  }
+
+  &__error {
+    @include max-width-center;
+    @include custom-font-size(16px, 20px);
+    text-align: center;
+    padding: 0 70px;
+
+    @media screen and (max-width: 770px) {
+      @include custom-font-size(12px, 15px);
+      padding: 0 30px;
+    }
+
+    @media screen and (max-width: 450px) {
+      padding: 0 10px;
+    }
+  }
 }

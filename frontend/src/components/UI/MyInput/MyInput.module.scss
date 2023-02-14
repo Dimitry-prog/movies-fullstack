@@ -1,0 +1,49 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.input {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    @include custom-font-size(10px, 12px);
+    padding-bottom: 10px;
+    color: $gray-color;
+  }
+
+  input {
+    @include custom-font-size(13px, 16px);
+    width: 100%;
+    padding: 15px;
+    font-weight: $font-weight-500;
+    border-radius: $border-radius-xm;
+    color: $white-color;
+    background-color: $secondary-color-light;
+    transition: $transition-m;
+
+    &:focus {
+      background-color: $gray-color-light;
+    }
+
+    &:valid {
+      border: 1px solid $accent-color-green-dark;
+    }
+
+    &:invalid[dirtied="true"] {
+      color: $accent-color-red;
+      border: 1px solid $accent-color-red;
+    }
+
+    &:invalid[dirtied="true"] ~ span {
+      display: block;
+    }
+  }
+
+  span {
+    @include custom-font-size(10px, 12px);
+    display: none;
+    padding-top: 5px;
+    color: $accent-color-red;
+  }
+
+}

@@ -20,10 +20,15 @@
     @include custom-font-size(24px, 29px);
     margin: 0 0 125px;
     font-weight: $font-weight-500;
+
+    @media screen and (max-width: 450px) {
+      text-align: center;
+    }
   }
 
   form {
     width: 100%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
 
@@ -35,6 +40,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
     }
 
     & > div:first-of-type {
@@ -44,14 +50,22 @@
     p {
       @include custom-font-size(11px, 13px);
       font-weight: $font-weight-500;
+      position: absolute;
+      left: 15px;
+      top: 15px;
     }
 
     input {
       @include custom-font-size(11px, 13px);
-      width: 90%;
-      padding: 15px;
+      width: 100%;
+      padding: 15px 15px 15px 60px;
       text-align: right;
+      border-radius: $border-radius-s;
       color: $white-color;
+
+      &:focus {
+        background-color: $gray-color-light;
+      }
     }
 
     span {
@@ -73,10 +87,49 @@
         opacity: $opacity-m;
       }
 
+      &:disabled {
+        cursor: inherit;
+        opacity: $opacity-m;
+      }
+
       @media screen and (max-width: 450px) {
         @include custom-font-size(12px, 15px);
         margin-top: auto;
       }
+    }
+  }
+
+  .edit {
+
+    input {
+
+      &:valid {
+        border-color: transparent;
+        border-bottom: 1px solid $accent-color-green-dark;
+      }
+
+      &:invalid {
+        border-bottom: 1px solid $accent-color-red;
+      }
+
+      &:invalid[dirtied="true"] {
+        color: $accent-color-red;
+        border-color: transparent;
+        border-bottom: 1px solid $accent-color-red;
+      }
+    }
+  }
+
+  a {
+    @include custom-font-size(13px, 16px);
+    padding-top: 20px;
+
+    &:hover {
+      opacity: $opacity-m;
+    }
+
+    @media screen and (max-width: 450px) {
+      @include custom-font-size(12px, 15px);
     }
   }
 }

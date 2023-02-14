@@ -3,23 +3,30 @@ import NotFound from '../components/NotFound/NotFound';
 import FilmsPage from '../pages/FilmsPage/FilmsPage';
 import FavouritesPage from '../pages/FavouritesPage/FavouritesPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
-import AuthTemplate from '../components/AuthTemplate/AuthTemplate';
 import EditProfile from '../components/EditProfile/EditProfile';
+import Register from '../components/Register/Register';
+import Login from '../components/Login/Login';
 
-
-const routesConfig = [
+export const publicRoutes = [
     {
         path: '/signup',
-        component: <AuthTemplate isUserExist={false}/>
+        component: <Register/>
     },
     {
         path: '/signin',
-        component: <AuthTemplate isUserExist={true}/>
+        component: <Login/>
     },
     {
         path: '/',
         component: <HomePage/>,
     },
+    {
+        path: '*',
+        component: <HomePage/>,
+    },
+];
+
+export const privateRoutes = [
     {
         path: '/movies',
         component: <FilmsPage/>,
@@ -37,9 +44,11 @@ const routesConfig = [
         component: <EditProfile/>,
     },
     {
+        path: '/',
+        component: <HomePage/>,
+    },
+    {
         path: '*',
         component: <NotFound/>,
     },
 ];
-
-export default routesConfig;
