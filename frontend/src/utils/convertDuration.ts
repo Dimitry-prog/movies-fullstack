@@ -1,4 +1,4 @@
-export const convertDuration = (duration) => {
+export const convertDuration = (duration: number) => {
     if (duration > 60) {
         const integer = Math.trunc(duration / 60);
         const digits = duration % 60;

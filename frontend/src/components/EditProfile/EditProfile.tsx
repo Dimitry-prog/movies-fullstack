@@ -5,7 +5,7 @@ import {patchUserInfo} from '../../api/mainApi';
 import useFormValidation from '../../hooks/useFormvalidation';
 import {Link} from 'react-router-dom';
 import MyInput from '../UI/MyInput/MyInput';
-import {openInfoTooltip} from '../../store/modalSlice';
+import {openInfoTooltip} from '../../store/slices/modalSlice';
 
 const EditProfile = () => {
     const {user, loading} = useSelector(state => state.user);

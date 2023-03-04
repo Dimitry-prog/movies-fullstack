@@ -2,7 +2,7 @@ import React from 'react';
 import success from '../../images/succsessSign.svg';
 import styles from './InfoTooltip.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
-import {closeInfoTooltip} from '../../store/modalSlice';
+import {closeInfoTooltip} from '../../store/slices/modalSlice';
 import {useNavigate} from 'react-router-dom';
 
 const InfoTooltip = () => {

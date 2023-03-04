@@ -4,7 +4,7 @@ import logo from '../../images/logo.svg';
 import profileIcon from '../../images/profile_icon.svg';
 import {Link, NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {openModal} from '../../store/modalSlice';
+import {openModal} from '../../store/slices/modalSlice';
 
 const Header = () => {
     const {isAuth} = useSelector((state) => state.auth);

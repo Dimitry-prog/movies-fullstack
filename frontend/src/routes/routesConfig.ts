@@ -1,11 +1,11 @@
-import HomePage from '../pages/HomePage/HomePage';
-import NotFound from '../components/NotFound/NotFound';
-import FilmsPage from '../pages/FilmsPage/FilmsPage';
-import FavouritesPage from '../pages/FavouritesPage/FavouritesPage';
-import ProfilePage from '../pages/ProfilePage/ProfilePage';
-import EditProfile from '../components/EditProfile/EditProfile';
-import Register from '../components/Register/Register';
-import Login from '../components/Login/Login';
+import HomePage from "../pages/HomePage/HomePage";
+import FilmsPage from "../pages/FilmsPage/FilmsPage";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import EditProfile from "../components/EditProfile/EditProfile";
+import Login from "../components/Login/Login";
+import FavouritesPage from "../pages/FavouritesPage/FavouritesPage";
+import NotFound from "../components/NotFound/NotFound";
+import Register from "../components/Register/Register";
 
 export const publicRoutes = [
     {

@@ -7,9 +7,9 @@ import {getMovies} from '../../api/moviesApi';
 import useFormValidation from '../../hooks/useFormvalidation';
 import MyInput from '../UI/MyInput/MyInput';
 import {getFavouritesMovies} from '../../api/mainApi';
-import {setSearchedFavouritesMovies} from '../../store/favouriteMoviesSlice';
+import {setSearchedFavouritesMovies} from '../../store/slices/favouriteMoviesSlice';
 import {useLocation} from 'react-router-dom';
-import {setSearchedMovies} from '../../store/moviesSlice';
+import {setSearchedMovies} from '../../store/slices/moviesSlice';
 import {SHORT_MOVIE_DURATION} from '../../utils/constants';
 
 const SearchForm = () => {

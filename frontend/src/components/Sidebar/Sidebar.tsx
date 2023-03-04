@@ -3,7 +3,7 @@ import styles from './Sidebar.module.scss';
 import {Link, NavLink} from 'react-router-dom';
 import profileIcon from '../../images/profile_icon.svg';
 import {useDispatch, useSelector} from 'react-redux';
-import {closeModal} from '../../store/modalSlice';
+import {closeModal} from '../../store/slices/modalSlice';
 
 const Sidebar = () => {
     const {isOpen} = useSelector(state => state.modal);
